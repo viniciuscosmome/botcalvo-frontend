@@ -1,0 +1,41 @@
+@import '../../../styles/import.esential';
+
+.button {
+  @include display(flex, center, center);
+  column-gap: .5rem;
+
+  position: relative;
+  padding: .75rem 1.5rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: .015rem;
+  white-space: nowrap;
+  border-radius: $border-radius-md;
+  color: $white;
+  background-color: $purple-1;
+  background: $gradient-purple-0;
+}
+
+.simple {
+  color: $secondary;
+  background-color: $background;
+  background: $background;
+  border: 1px solid $dashboard-border-color;
+}
+
+.left {
+  justify-content: flex-start;
+}
+
+.right {
+  justify-content: flex-end;
+}
+
+.fitWidth {
+  width: 100%;
+}
+
+.slim {
+  padding: .35rem 2rem;
+  border-radius: $border-radius-sm;
+}
