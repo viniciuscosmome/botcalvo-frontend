@@ -15,9 +15,25 @@ $gradient-purple-1: linear-gradient(90deg, #4a00e000 0%, $purple-2 100%);
 $gradient-purple-2: linear-gradient(90deg, #4a00e000 0%, #8e2de24d 100%);
 $linear-gradient-orange: linear-gradient(90deg, #FF4D4D 0%, $yellow 100%);
 
+// Convert css variables to use like a scss variables
+$principal: var(--principal);
+$secondary: var(--secondary);
+$support: var(--support);
+$background: var(--background);
+$dashboard-border-color: var(--dashboard-border-color);
+
 $screen-xs: 0;
 $screen-sm: 576px;
 $screen-md: 768px;
 $screen-lg: 992px;
 $screen-xl: 1200px;
 $screen-xxl: 1400px;
+
+$border-radius-sm: 5px;
+$border-radius-md: 9px;
+$border-radius-lg: 12px;
+
+$box-shadow: 0 .5rem 1rem rgba($black, .15);
+$box-shadow-sm: 0 .125rem .25rem rgba($black, .075);
+$box-shadow-lg: 0 1rem 3rem rgba($black, .175);
+$box-shadow-inset: inset 0 1px 2px rgba($black, .075);

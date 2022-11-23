@@ -1,15 +1,16 @@
-@import "assets/font";
-@import "assets/variables";
+@import 'assets/font', 'assets/variables', 'assets/theme';
 
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: $poppins;
 }
 
 html,
 body {
-  font-family: $poppins;
+  color: $secondary;
+  background-color: $background;
 }
 
 a,

@@ -1,0 +1,30 @@
+@mixin light-theme {
+  --principal: #{$purple-1};
+  --secondary: #{$black};
+  --support: #{$gray};
+  --background: #{$white};
+  --dashboard-border-color: #{$light};
+}
+
+@mixin dark-theme {
+  --principal: #{$purple-2};
+  --secondary: #{$white};
+  --background: #{$black};
+
+  // Dashboard
+  --dashboard-border-color: #{$dark};
+}
+
+:root {
+  @include light-theme;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+
+  :root {
+    @include dark-theme;
+  }
+}

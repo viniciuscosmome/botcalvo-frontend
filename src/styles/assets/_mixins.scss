@@ -1,0 +1,41 @@
+@mixin display (
+  $display: false,
+  $align: false,
+  $justify: false,
+  $direction: false,
+  $wrap: false,
+) {
+  @if ($display){
+    display: $display;
+  }
+  @if ($align){
+    align-items: $align;
+  }
+  @if ($justify){
+    justify-content: $justify;
+  }
+  @if ($direction){
+    flex-direction: $direction;
+  }
+  @if ($wrap){
+    flex-wrap: $wrap;
+  }
+}
+
+@mixin hidden {
+  display: none;
+  position: absolute;
+  overflow: hidden;
+  z-index: -1050;
+  opacity: 0;
+  max-width: 0;
+  max-height: 0;
+  pointer-events: none;
+}
+
+@mixin font-gradient {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
