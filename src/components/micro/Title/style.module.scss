@@ -1,0 +1,27 @@
+@import '../../../styles/import.esential';
+
+.title {
+  font-size: clamp(21px, 2.2rem, 40px);
+  font-weight: 500;
+  color: $principal;
+}
+
+.small {
+  font-size: clamp(14px, 1.2rem, 28px);
+}
+
+.medium {
+  font-size: clamp(18px, 1.75rem, 28px);
+}
+
+.colorTheme {
+  color: $secondary;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
