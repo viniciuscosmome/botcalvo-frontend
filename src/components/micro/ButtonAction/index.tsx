@@ -3,16 +3,18 @@ import { classes } from '../../../helpers/styles.helper';
 import styles from './style.module.scss';
 
 type iButtonActionProps = {
+  customClass?: string;
   style?: string;
   textAlign?: string;
   fitWidth?: boolean;
   slim?: boolean;
   type?: 'button' | 'submit';
   action?: () => unknown;
-  children?: React.ReactNode | Array<React.ReactNode>;
+  children: React.ReactNode | Array<React.ReactNode>;
 };
 
 export function ButtonAction ({
+  customClass,
   style,
   textAlign,
   type,
@@ -21,18 +23,19 @@ export function ButtonAction ({
   action,
   children
 }: iButtonActionProps) {
-  const customClass: Array<string> = [];
+  const customizeClass: Array<string> = [];
 
-  slim && customClass.push(styles.slim);
-  fitWidth && customClass.push(styles.fitWidth);
-  style && customClass.push(styles[style]);
-  textAlign && customClass.push(styles[textAlign]);
+  slim && customizeClass.push(styles.slim);
+  fitWidth && customizeClass.push(styles.fitWidth);
+  style && customizeClass.push(styles[style]);
+  textAlign && customizeClass.push(styles[textAlign]);
+  customClass && customizeClass.push(customClass);
 
   return (
     <button
       type={type}
       onClick={action}
-      className={classes(styles.button, ...customClass)}
+      className={classes(styles.button, ...customizeClass)}
     >
       {children}
     </button>
