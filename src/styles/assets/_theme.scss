@@ -3,6 +3,8 @@
   --secondary: #{$black};
   --support: #{$gray};
   --background: #{$white};
+
+  // Dashboard
   --dashboard-border-color: #{$light};
 }
 
@@ -15,6 +17,7 @@
   --dashboard-border-color: #{$dark};
 }
 
+// browser theme
 :root {
   @include light-theme;
 }
@@ -27,4 +30,13 @@
   :root {
     @include dark-theme;
   }
+}
+
+// user select theme
+[data-user-theme=light] {
+  @include light-theme;
+}
+
+[data-user-theme=dark] {
+  @include dark-theme;
 }
