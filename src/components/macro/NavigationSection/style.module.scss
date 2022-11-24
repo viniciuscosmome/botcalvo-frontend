@@ -1,0 +1,23 @@
+@import '../../../styles/import.esential';
+
+.section {
+  width: 100%;
+}
+
+.list {
+  @include display(flex, center, flex-start, column);
+  row-gap: .5rem;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+
+  position: relative;
+  padding: 1rem 0;
+  width: 100%;
+
+  max-height: 220px;
+  min-height: 150px;
+}
+
+.extraButton {
+  margin-bottom: .5rem;
+}
