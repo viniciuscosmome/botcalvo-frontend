@@ -1,0 +1,30 @@
+@import '../../../styles/import.esential';
+
+.left,
+.right {
+  padding: $dashboard-common-padding;
+
+  &.workarea {
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+  }
+}
+
+.left {
+  @include display(flex, center, space-between);
+  width: $dashboard-workarea-width;
+}
+
+.right {
+  @include display(flex, center, flex-end);
+  max-width: $dashboard-navigation-max-width;
+  width: $dashboard-navigation-width;
+
+  &.workarea {
+    align-items: flex-start;
+    border-left: 1px solid $dashboard-border-color;
+    border-right: 1px solid $dashboard-border-color;
+  }
+}
