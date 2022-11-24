@@ -41,6 +41,12 @@
   }
 }
 
+.simple-opacity {
+  @extend .simple;
+
+  color: $support;
+}
+
 .left {
   justify-content: flex-start;
 }
@@ -60,4 +66,14 @@
 .slim {
   padding: .35rem 2rem;
   border-radius: $border-radius-sm;
+}
+
+.simple.slim,
+.simple-opacity.slim {
+  padding: .35rem 1rem;
+}
+
+.scrollSnap {
+  scroll-margin: .5rem;
+  scroll-snap-align: start;
 }

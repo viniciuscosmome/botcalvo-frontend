@@ -4,13 +4,14 @@ import styles from './style.module.scss';
 
 type iButtonActionProps = {
   customClass?: string;
-  style?: 'light' | 'simple';
+  style?: 'light' | 'simple' | 'simple-opacity';
   textAlign?: 'left' | 'right';
   type?: 'button' | 'submit';
   fitWidth?: boolean;
   slim?: boolean;
   grad?: boolean;
-  action?: () => unknown;
+  scrollSnap?: boolean;
+  action?: () => void;
   children: React.ReactNode | Array<React.ReactNode>;
 };
 
@@ -22,6 +23,7 @@ export function ButtonAction ({
   fitWidth,
   slim,
   grad,
+  scrollSnap,
   action,
   children
 }: iButtonActionProps) {
@@ -32,6 +34,7 @@ export function ButtonAction ({
   style && customizeClass.push(styles[style]);
   textAlign && customizeClass.push(styles[textAlign]);
   grad && customizeClass.push(styles.grad);
+  scrollSnap && customizeClass.push(styles.scrollSnap);
   customClass && customizeClass.push(customClass);
 
   return (
