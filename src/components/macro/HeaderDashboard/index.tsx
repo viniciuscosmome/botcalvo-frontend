@@ -16,7 +16,7 @@ export function HeaderDashboard({ user }: iHeaderDashboardProps) {
           Calvinho
         </Title>
 
-        <ButtonAction slim>
+        <ButtonAction slim grad>
           Me Adicione <i className={classes('bi bi-robot', styles.icon)}></i>
         </ButtonAction>
       </ColumnDashboard>
