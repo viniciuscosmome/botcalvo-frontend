@@ -1,4 +1,4 @@
-import { Wrapper } from '../../';
+import { Header, Wrapper } from '../../';
 
 type iHomeProps = {
   children: React.ReactNode | Array<React.ReactNode>;
@@ -7,7 +7,11 @@ type iHomeProps = {
 export function HomeWrapper({ children }: iHomeProps) {
   return (
     <Wrapper>
-      {children}
+      <Header.Home />
+
+      <main>
+        {children}
+      </main>
     </Wrapper>
   );
 }
