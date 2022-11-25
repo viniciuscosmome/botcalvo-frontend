@@ -1,0 +1,27 @@
+@import '../../../styles/import.esential';
+
+.button {
+  @include display(flex, center, center);
+  column-gap: .5rem;
+
+  padding-right: .7rem;
+  font-weight: 500;
+  font-size: 12px;
+  color: $background;
+  border-radius: 100px;
+  background: $secondary;
+}
+
+.circle {
+  @include display(flex, center, center);
+
+  max-width: 24px;
+  max-height: 24px;
+  width: 24px;
+  height: 24px;
+  color: $white;
+  font-size: 14px;
+  border-radius: 50%;
+  background-color: $principal;
+  background-image: $gradient-purple-0;
+}
