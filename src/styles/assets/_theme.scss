@@ -34,9 +34,11 @@
 
 // user select theme
 [data-user-theme=light] {
+  color-scheme: light;
   @include light-theme;
 }
 
 [data-user-theme=dark] {
+  color-scheme: dark;
   @include dark-theme;
 }
