@@ -38,7 +38,7 @@ export function DashboardWrapper({ channels, streams, children }: iDashboardWrap
             content={channels}
             extraButtonIcon={'bi bi-plus'}
             extraButtonContent={'Adicionar canal'}
-            extraButtonRedirect={'/dashboard'}
+            extraButtonRedirect={'/dashboard/new-channel'}
           />
 
           <Navigation.Dashboard
@@ -47,7 +47,7 @@ export function DashboardWrapper({ channels, streams, children }: iDashboardWrap
             content={streams}
             extraButtonIcon={'bi bi-plus'}
             extraButtonContent={'Adicionar stream'}
-            extraButtonRedirect={'/dashboard'}
+            extraButtonRedirect={'/dashboard/new-stream'}
           />
 
           <HorizontalSplit />
