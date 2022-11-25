@@ -1,26 +1,26 @@
 import { useRouter } from 'next/router';
-import { Title, ButtonAction } from '../../';
+import { Title, ButtonAction } from '../..';
 import styles from './style.module.scss';
 
-export type iNavigationItemProps = {
+export type iNavigationDashboardItemProps = {
   id: number | string;
   name: string;
   redirect: string;
 };
 
-type iNavigationSectionProps = {
+type iNavigationDashboardSectionProps = {
   icon?: string;
   title?: string;
   extraButtonIcon?: string;
   extraButtonContent?: string;
   extraButtonRedirect?: string;
-  content: Array<iNavigationItemProps>;
+  content: Array<iNavigationDashboardItemProps>;
 };
 
 const renderNavItem = ({
   name,
   redirect,
-}: iNavigationItemProps, index: number) => {
+}: iNavigationDashboardItemProps, index: number) => {
   const router = useRouter();
 
   const handleClick = (): void => {
@@ -34,13 +34,13 @@ const renderNavItem = ({
   );
 };
 
-export function NavigationSection({
+function Dashboard({
   icon,
   title,
   extraButtonIcon,
   extraButtonContent,
   extraButtonRedirect,
-  content }: iNavigationSectionProps) {
+  content }: iNavigationDashboardSectionProps) {
   const router = useRouter();
 
   const handleClick = (): void => {
@@ -65,3 +65,7 @@ export function NavigationSection({
     </section>
   );
 }
+
+export const Navigation = {
+  Dashboard,
+};
