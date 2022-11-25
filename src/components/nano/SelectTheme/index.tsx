@@ -33,7 +33,6 @@ export function SelectTheme() {
   };
 
   const handleClick = (): void => {
-    console.log(selectedTheme);
     let updateTo = selectedTheme + 1;
     if (updateTo > 2) updateTo = 0;
     setSelectedTheme(updateTo);
