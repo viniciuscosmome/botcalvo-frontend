@@ -9,3 +9,5 @@ export * from './micro/Navigation';
 export * from './nano/ButtonAction';
 export * from './nano/Title';
 export * from './nano/HorizontalSplit';
+export * from './nano/Logo';
+export * from './nano/SelectTheme';
