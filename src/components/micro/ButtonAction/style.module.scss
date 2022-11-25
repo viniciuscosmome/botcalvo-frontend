@@ -1,0 +1,79 @@
+@import '../../../styles/import.esential';
+
+.button {
+  @include display(flex, center, center);
+  column-gap: .5rem;
+
+  position: relative;
+  padding: .75rem 1.5rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: .015rem;
+  white-space: nowrap;
+  border-radius: $border-radius-md;
+  color: $white;
+  background-color: $principal;
+
+  transition-duration: .2s;
+  transition-property: color;
+
+  &:hover {
+    filter: brightness(0.90);
+  }
+}
+
+.light {
+  color: $purple-1;
+  background-color: $white;
+
+  &:hover {
+    background-color: $light;
+  }
+}
+
+.simple {
+  color: $secondary;
+  background-color: $background;
+  border: 1px solid $dashboard-border-color;
+
+  &:hover {
+    color: $principal;
+  }
+}
+
+.simple-opacity {
+  @extend .simple;
+
+  color: $support;
+}
+
+.left {
+  justify-content: flex-start;
+}
+
+.right {
+  justify-content: flex-end;
+}
+
+.fitWidth {
+  width: 100%;
+}
+
+.grad {
+  background: $gradient-purple-0;
+}
+
+.slim {
+  padding: .35rem 2rem;
+  border-radius: $border-radius-sm;
+}
+
+.simple.slim,
+.simple-opacity.slim {
+  padding: .35rem 1rem;
+}
+
+.scrollSnap {
+  scroll-margin: .5rem;
+  scroll-snap-align: start;
+}

@@ -20,7 +20,14 @@ $principal: var(--principal);
 $secondary: var(--secondary);
 $support: var(--support);
 $background: var(--background);
+
+// Dashboard
 $dashboard-border-color: var(--dashboard-border-color);
+$dashboard-workarea-width: 100%;
+$dashboard-navigation-width: 35%;
+$dashboard-navigation-max-width: 350px;
+$dashboard-common-padding: 1rem;
+// Dashboard end
 
 $screen-xs: 0;
 $screen-sm: 576px;

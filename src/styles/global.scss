@@ -22,3 +22,16 @@ button {
   outline: none;
   background: none;
 }
+
+::-webkit-scrollbar-track-piece,
+::-webkit-scrollbar-track,
+::-webkit-scrollbar {
+  width: 5px;
+  background-color: $background;
+  border-left: 1px solid $dashboard-border-color;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $principal;
+  border-radius: 10px;
+}

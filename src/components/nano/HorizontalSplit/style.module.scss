@@ -1,0 +1,10 @@
+@import '../../../styles/import.esential';
+
+.split {
+  display: flex;
+  margin: 0 auto -.5rem;
+  min-width: 80%;
+  min-height: 2px;
+  background-color: $principal;
+  background: $gradient-purple-0;
+}
