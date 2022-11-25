@@ -7,8 +7,7 @@
   font-family: $poppins;
 }
 
-html,
-body {
+html {
   color: $secondary;
   background-color: $background;
 }
@@ -21,6 +20,10 @@ button {
   border: none;
   outline: none;
   background: none;
+}
+
+a:hover {
+  color: $principal;
 }
 
 ::-webkit-scrollbar-track-piece,
