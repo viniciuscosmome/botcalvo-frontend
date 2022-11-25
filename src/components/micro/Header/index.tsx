@@ -1,5 +1,5 @@
 import { classes } from '../../../helpers/styles.helper';
-import { Column, Title, ButtonAction } from '../..';
+import { Logo, Column, Title, ButtonAction, Navigation } from '../..';
 import styles from './style.module.scss';
 
 type iHeaderDashboardProps = {
@@ -17,7 +17,7 @@ function Dashboard({ user }: iHeaderDashboardProps) {
         </Title>
 
         <ButtonAction slim grad>
-          Me Adicione <i className={classes('bi bi-robot', styles.icon)}></i>
+          Me Adicione <Logo.Icon color={'white'} size={'small'}/>
         </ButtonAction>
       </Column>
 
@@ -32,8 +32,10 @@ function Dashboard({ user }: iHeaderDashboardProps) {
 
 function Home() {
   return (
-    <header className={styles.header}>
-      Home header
+    <header className={classes(styles.header, styles.home)}>
+      <Logo.Complete color />
+
+      <Navigation.Home />
     </header>
   );
 }
