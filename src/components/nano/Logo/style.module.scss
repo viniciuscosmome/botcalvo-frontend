@@ -1,0 +1,44 @@
+@import '../../../styles/import.esential';
+
+.complete {
+  max-width: 250px;
+  width: 7rem;
+
+  &.small {
+    width: 5rem;
+  }
+
+  &.large {
+    width: 100%;
+  }
+}
+
+.icon {
+  max-width: 70px;
+  width: 2rem;
+
+  &.small {
+    width: 1.2rem;
+  }
+
+  &.large {
+    width: 100%;
+  }
+}
+
+.complete,
+.icon {
+  color: $secondary;
+
+  &.color {
+    color: $principal;
+  }
+}
+
+.white {
+  color: $white;
+}
+
+.black {
+  color: $black;
+}
