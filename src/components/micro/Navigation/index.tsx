@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { Title, ButtonAction, SelectTheme } from '../..';
 import styles from './style.module.scss';
 
@@ -22,16 +21,14 @@ const renderNavItem = ({
   name,
   redirect,
 }: iNavigationDashboardItemProps, index: number) => {
-  const router = useRouter();
-
-  const handleClick = (): void => {
-    redirect && router.push(redirect);
-  };
+  const redirectTo = redirect ?? '#unknow';
 
   return (
-    <ButtonAction key={index} action={handleClick} style='simple' textAlign='left' fitWidth scrollSnap slim>
-      {name}
-    </ButtonAction>
+    <Link href={redirectTo} key={index}>
+      <ButtonAction style='simple' textAlign='left' fitWidth scrollSnap slim>
+        {name}
+      </ButtonAction>
+    </Link>
   );
 };
 
@@ -42,11 +39,7 @@ function Dashboard({
   extraButtonContent,
   extraButtonRedirect,
   content }: iNavigationDashboardSectionProps) {
-  const router = useRouter();
-
-  const handleClick = (): void => {
-    extraButtonRedirect && router.push(extraButtonRedirect);
-  };
+  const extraButtonRedirectTo = extraButtonRedirect ?? '#unknow';
 
   return (
     <section className={styles.section}>
@@ -60,9 +53,11 @@ function Dashboard({
       </nav>
 
       {extraButtonContent && extraButtonRedirect &&
-        <ButtonAction action={handleClick} customClass={styles.extraButton} style='simple-opacity' textAlign='left' fitWidth slim>
-          {extraButtonIcon && <i className={extraButtonIcon}></i>} {extraButtonContent}
-        </ButtonAction>}
+        <Link href={extraButtonRedirectTo} className={styles.extraButton}>
+          <ButtonAction style='simple-opacity' textAlign='left' fitWidth slim>
+            {extraButtonIcon && <i className={extraButtonIcon}></i>} {extraButtonContent}
+          </ButtonAction>
+        </Link>}
     </section>
   );
 }

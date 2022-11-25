@@ -5,7 +5,7 @@
 }
 
 .list {
-  @include display(flex, center, flex-start, column);
+  @include display(flex, false, flex-start, column);
   row-gap: .5rem;
   overflow-y: auto;
   scroll-snap-type: y mandatory;
