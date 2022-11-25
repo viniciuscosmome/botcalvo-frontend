@@ -1,5 +1,6 @@
+import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { Title, ButtonAction } from '../..';
+import { Title, ButtonAction, SelectTheme } from '../..';
 import styles from './style.module.scss';
 
 export type iNavigationDashboardItemProps = {
@@ -66,6 +67,29 @@ function Dashboard({
   );
 }
 
+function Home() {
+  return (
+    <nav className={styles.home}>
+      <Link href={'/'} className={styles.link}>
+        Home
+      </Link>
+
+      <Link href={'/auth/login'} className={styles.link}>
+        Entrar
+      </Link>
+
+      <Link href={'/auth/register'}>
+        <ButtonAction slim grad customClass={styles.register}>
+          Cadastrar
+        </ButtonAction>
+      </Link>
+
+      <SelectTheme />
+    </nav>
+  );
+}
+
 export const Navigation = {
+  Home,
   Dashboard,
 };
