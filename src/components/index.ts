@@ -1,5 +1,5 @@
-export * from './macro/Home';
-export * from './macro/Dashboard';
+export * from './mega/Home';
+export * from './mega/Dashboard';
 
 export * from './micro/Wrapper';
 export * from './micro/Header';

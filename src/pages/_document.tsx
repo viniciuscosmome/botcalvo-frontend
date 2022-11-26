@@ -1,6 +1,6 @@
 import { Html, Head, Main, NextScript } from 'next/document';
 import { useContext } from 'react';
-import { ThemeContext } from '../components/macro/Context';
+import { ThemeContext } from '../components/mega/Context';
 
 export default function Document() {
   const context = useContext(ThemeContext);

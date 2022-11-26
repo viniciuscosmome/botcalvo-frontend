@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { ThemeContext, iThemeProps, themeDefaultValue } from '../../macro/Context';
+import { ThemeContext, iThemeProps, themeDefaultValue } from '../../mega/Context';
 import styles from './style.module.scss';
 
 type iThemeProp = {
