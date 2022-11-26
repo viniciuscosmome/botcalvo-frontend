@@ -66,7 +66,7 @@ function Home() {
   return (
     <nav className={styles.home}>
       <Link href={'/'} className={styles.link}>
-        Home
+        Ínicio
       </Link>
 
       <Link href={'/auth/login'} className={styles.link}>
