@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useContext } from 'react';
+import { ThemeContext, iThemeProps, themeDefaultValue } from '../../macro/Context';
 import styles from './style.module.scss';
 
 type iThemeProp = {
@@ -8,11 +9,11 @@ type iThemeProp = {
 };
 
 export function SelectTheme() {
-  const [selectedTheme, setSelectedTheme] = useState(0);
+  const themeContext = useContext(ThemeContext);
   const themes: Array<iThemeProp> = [
     {
       data: '',
-      icon: '',
+      icon: 'bi bi-cloud-sun-fill',
       content: 'padrão'
     },
     {
@@ -27,25 +28,34 @@ export function SelectTheme() {
     }
   ];
 
-  const setDocumentThemeAttribute = (index: number): void => {
-    document.querySelector('html')?.setAttribute('data-user-theme', themes[index].data);
-    document.body.setAttribute('data-user-theme', themes[index].data);
+  const updateGlobalTheme = (newTheme: iThemeProps): void => {
+    document.querySelector('body')?.setAttribute('data-user-theme', newTheme.data);
   };
 
   const handleClick = (): void => {
-    let updateTo = selectedTheme + 1;
-    if (updateTo > 2) updateTo = 0;
-    setSelectedTheme(updateTo);
-    setDocumentThemeAttribute(updateTo);
+    let newTheme: iThemeProps = themeDefaultValue;
+    const searchData = themeContext.theme?.data;
+    const { length } = themes;
+
+    for (let index = 0; index < length; index++) {
+      if (searchData !== themes[index].data) continue;
+
+      newTheme = themes[index + 1] ?? themes[0];
+
+      break;
+    }
+
+    updateGlobalTheme(newTheme);
+    themeContext.setTheme(newTheme);
   };
 
   return (
-    <button onClick={handleClick} className={styles.button}>
+    <button className={styles.button} onClick={handleClick}>
       <span className={styles.circle}>
-        <i className={themes[selectedTheme].icon}></i>
+        <i className={themeContext.theme?.icon}></i>
       </span>
       <span className={styles.content}>
-        {themes[selectedTheme].content}
+        {themeContext.theme?.content}
       </span>
     </button>
   );
