@@ -9,9 +9,7 @@ export function HomeWrapper({ children }: iHomeProps) {
     <Wrapper>
       <Header.Home />
 
-      <main>
-        {children}
-      </main>
+      {children}
 
       <Footer />
     </Wrapper>
