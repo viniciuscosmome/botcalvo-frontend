@@ -17,6 +17,10 @@ type iNavigationDashboardSectionProps = {
   content: Array<iNavigationDashboardItemProps>;
 };
 
+type iHomeProps = {
+  selectTheme: boolean;
+};
+
 const renderNavItem = ({
   name,
   redirect,
@@ -62,7 +66,7 @@ function Dashboard({
   );
 }
 
-function Home() {
+function Home({selectTheme}: iHomeProps) {
   return (
     <nav className={styles.home}>
       <Link href={'/'} className={styles.link}>
@@ -79,7 +83,7 @@ function Home() {
         </ButtonAction>
       </Link>
 
-      <SelectTheme />
+      {selectTheme && <SelectTheme />}
     </nav>
   );
 }

@@ -6,7 +6,7 @@ import styles from './style.module.scss';
 export function Footer() {
   return (
     <footer className={styles.footer}>
-      <Navigation.Home />
+      <Navigation.Home selectTheme={false} />
 
       <div className={styles.legal}>
         <span className={classes(styles.logo, styles.content)}>
