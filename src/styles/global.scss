@@ -26,10 +26,6 @@ a:hover {
   color: $principal;
 }
 
-figure {
-  @include display(flex, center, center);
-}
-
 ::-webkit-scrollbar-track-piece,
 ::-webkit-scrollbar-track,
 ::-webkit-scrollbar {
