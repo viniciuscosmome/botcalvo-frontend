@@ -27,7 +27,7 @@ export function SelectTheme() {
     }
   ];
 
-  const setDocumentThemeAttribute = (index: number) => {
+  const setDocumentThemeAttribute = (index: number): void => {
     document.querySelector('html')?.setAttribute('data-user-theme', themes[index].data);
     document.body.setAttribute('data-user-theme', themes[index].data);
   };
