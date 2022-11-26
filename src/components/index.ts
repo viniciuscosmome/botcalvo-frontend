@@ -3,6 +3,7 @@ export * from './macro/Dashboard';
 
 export * from './micro/Wrapper';
 export * from './micro/Header';
+export * from './micro/Footer';
 export * from './micro/Column';
 export * from './micro/Navigation';
 
