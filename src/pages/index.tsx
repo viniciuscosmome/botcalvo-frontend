@@ -1,11 +1,15 @@
-import { HomeWrapper } from '../components';
+import { useRouter } from 'next/router';
+import { HomeWrapper, Inicio } from '../components';
 
 export default function Home() {
-  const hello = 'Hello World!';
+  const router = useRouter();
+  const { content } = router.query;
+
+  const page = content ?? 'home';
 
   return (
     <HomeWrapper>
-      {hello}
+      {page === 'home' && <Inicio />}
     </HomeWrapper>
   );
 }
