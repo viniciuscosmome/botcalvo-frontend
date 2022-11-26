@@ -1,4 +1,4 @@
-@import 'assets/font', 'assets/variables', 'assets/theme';
+@import 'assets/font', 'assets/variables', 'assets/theme', 'assets/mixins';
 
 * {
   padding: 0;
@@ -24,6 +24,10 @@ button {
 
 a:hover {
   color: $principal;
+}
+
+figure {
+  @include display(flex, center, center);
 }
 
 ::-webkit-scrollbar-track-piece,
