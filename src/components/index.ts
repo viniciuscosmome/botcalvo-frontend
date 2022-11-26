@@ -12,3 +12,4 @@ export * from './nano/Title';
 export * from './nano/HorizontalSplit';
 export * from './nano/Logo';
 export * from './nano/SelectTheme';
+export * from './nano/svg';
