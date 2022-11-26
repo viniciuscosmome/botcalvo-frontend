@@ -1,4 +1,4 @@
-import { Header, Wrapper } from '../../';
+import { Footer, Header, Wrapper } from '../../';
 
 type iHomeProps = {
   children: React.ReactNode | Array<React.ReactNode>;
@@ -12,6 +12,8 @@ export function HomeWrapper({ children }: iHomeProps) {
       <main>
         {children}
       </main>
+
+      <Footer />
     </Wrapper>
   );
 }
