@@ -1,7 +1,10 @@
 export * from './mega/Home';
 export * from './mega/Dashboard';
 
+export * from './macro/Inicio';
+
 export * from './micro/Wrapper';
+export * from './micro/Main';
 export * from './micro/Header';
 export * from './micro/Footer';
 export * from './micro/Column';
