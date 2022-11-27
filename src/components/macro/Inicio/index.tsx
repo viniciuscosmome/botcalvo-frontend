@@ -34,21 +34,21 @@ export function Inicio() {
     <Main>
       <FloatCard
         title={'Streams'}
-        paragraph={'Little content about strems. Lorem ipsum dolor sit amet consectetur adipisicing elit.'}
+        paragraph={'Lorem ipsum dolor sit amet consectetur adipisicing elit.'}
       >
         <IconHomePlay classes={styles.icon} />
       </FloatCard>
 
       <FloatCard
         title={'Dashboard'}
-        paragraph={'Little content about strems. Lorem ipsum dolor sit amet consectetur adipisicing elit.'}
+        paragraph={'Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi dolorem, maiores repellendus.'}
       >
         <IconHomeDashboard classes={styles.icon} />
       </FloatCard>
 
       <FloatCard
         title={'Notificações'}
-        paragraph={'Little content about strems. Lorem ipsum dolor sit amet consectetur adipisicing elit.'}
+        paragraph={'Nam et, pariatur fugiat officia, facere hic in excepturi ipsa nostrum minima a eveniet quas voluptatum.'}
       >
         <IconHomeNotifications classes={styles.icon} />
       </FloatCard>
