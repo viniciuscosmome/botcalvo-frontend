@@ -1,5 +1,7 @@
 import Link from 'next/link';
+import { useState } from 'react';
 import { Title, ButtonAction, SelectTheme } from '../..';
+import { classes } from '../../../helpers/styles.helper';
 import styles from './style.module.scss';
 
 export type iNavigationDashboardItemProps = {
@@ -18,6 +20,7 @@ type iNavigationDashboardSectionProps = {
 };
 
 type iHomeProps = {
+  responsive?: boolean;
   selectTheme: boolean;
 };
 
@@ -66,25 +69,40 @@ function Dashboard({
   );
 }
 
-function Home({selectTheme}: iHomeProps) {
+function Home({selectTheme, responsive}: iHomeProps) {
+  const [showNavigation, setShowNavigation] = useState(false);
+  const responsiveClass = responsive ? styles.responsive : '';
+
+  const handleClick = (): void => {
+    setShowNavigation(!showNavigation);
+  };
+
   return (
-    <nav className={styles.home}>
-      <Link href={'/'} className={styles.link}>
-        Ínicio
-      </Link>
+    <>
+      {responsive &&
+        <ButtonAction action={handleClick} customClass={styles.openMenu} grad slim>
+          {!showNavigation && <i className="bi bi-list"></i>}
+          {showNavigation && <i className="bi bi-x-circle-fill"></i>}
+        </ButtonAction>}
 
-      <Link href={'/auth/login'} className={styles.link}>
-        Entrar
-      </Link>
+      <nav className={classes(styles.home, responsiveClass, showNavigation ? styles.visible : '')}>
+        <Link href={'/'} className={styles.link}>
+          Início
+        </Link>
 
-      <Link href={'/auth/register'}>
-        <ButtonAction slim grad customClass={styles.register}>
-          Cadastrar
-        </ButtonAction>
-      </Link>
+        <Link href={'/auth/login'} className={styles.link}>
+          Entrar
+        </Link>
 
-      {selectTheme && <SelectTheme />}
-    </nav>
+        <Link href={'/auth/register'}>
+          <ButtonAction slim grad customClass={styles.register}>
+            Cadastrar
+          </ButtonAction>
+        </Link>
+
+        {selectTheme && <SelectTheme />}
+      </nav>
+    </>
   );
 }
 
