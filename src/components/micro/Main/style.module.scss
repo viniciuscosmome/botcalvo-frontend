@@ -1,0 +1,11 @@
+@import '../../../styles/import.esential';
+
+.main {
+  @include display(flex, center, flex-start, column);
+  row-gap: 2rem;
+
+  margin: 0 auto;
+  padding: 5rem 1rem;
+  max-width: $home-content-width-limit;
+  width: 100vw;
+}

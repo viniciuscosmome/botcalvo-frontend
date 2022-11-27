@@ -1,4 +1,4 @@
-@import 'assets/font', 'assets/variables', 'assets/theme';
+@import 'assets/font', 'assets/variables', 'assets/theme', 'assets/mixins';
 
 * {
   padding: 0;
@@ -7,7 +7,6 @@
   font-family: $poppins;
 }
 
-html,
 body {
   color: $secondary;
   background-color: $background;
@@ -21,6 +20,10 @@ button {
   border: none;
   outline: none;
   background: none;
+}
+
+a:hover {
+  color: $principal;
 }
 
 ::-webkit-scrollbar-track-piece,

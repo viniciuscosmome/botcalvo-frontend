@@ -6,9 +6,9 @@ type iColumnProps = {
   customClass?: string;
   select: 'left' | 'right';
   children: React.ReactNode | Array<React.ReactNode>;
-}
+};
 
-export function ColumnDashboard({ select, workarea, customClass, children }: iColumnProps) {
+export function Column({ select, workarea, customClass, children }: iColumnProps) {
   const customizeClass: Array<string> = [];
 
   customizeClass.push(styles[select]);

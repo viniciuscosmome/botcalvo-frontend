@@ -1,15 +1,15 @@
-import type { iNavigationItemProps } from '../../';
+import type { iNavigationDashboardItemProps } from '../../';
 import {
   Wrapper,
-  HeaderDashboard,
-  ColumnDashboard,
-  NavigationSection,
+  Header,
+  Column,
+  Navigation,
   HorizontalSplit
 } from '../../';
 
 type iDashboardWrapperProps = {
-  channels: Array<iNavigationItemProps>;
-  streams: Array<iNavigationItemProps>;
+  channels: Array<iNavigationDashboardItemProps>;
+  streams: Array<iNavigationDashboardItemProps>;
   children: React.ReactNode | Array<React.ReactNode>;
 };
 
@@ -24,38 +24,38 @@ export function DashboardWrapper({ channels, streams, children }: iDashboardWrap
 
   return (
     <Wrapper>
-      <HeaderDashboard user={user} />
+      <Header.Dashboard user={user} />
 
       <Wrapper nowrap workarea>
-        <ColumnDashboard select='left' workarea>
+        <Column select='left' workarea>
           {children}
-        </ColumnDashboard>
+        </Column>
 
-        <ColumnDashboard select='right' workarea>
-          <NavigationSection
+        <Column select='right' workarea>
+          <Navigation.Dashboard
             icon={'bi bi-collection-play-fill'}
             title={'Seus canais'}
             content={channels}
             extraButtonIcon={'bi bi-plus'}
             extraButtonContent={'Adicionar canal'}
-            extraButtonRedirect={'/dashboard'}
+            extraButtonRedirect={'/dashboard/new-channel'}
           />
 
-          <NavigationSection
+          <Navigation.Dashboard
             icon={'bi bi-compass-fill'}
             title={'Streams'}
             content={streams}
             extraButtonIcon={'bi bi-plus'}
             extraButtonContent={'Adicionar stream'}
-            extraButtonRedirect={'/dashboard'}
+            extraButtonRedirect={'/dashboard/new-stream'}
           />
 
           <HorizontalSplit />
 
-          <NavigationSection
+          <Navigation.Dashboard
             content={actionsRoutes}
           />
-        </ColumnDashboard>
+        </Column>
       </Wrapper>
     </Wrapper>
   );

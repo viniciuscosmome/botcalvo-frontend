@@ -6,10 +6,13 @@
 
   position: relative;
   padding: .75rem 1.5rem;
+  max-width: 100%;
+  overflow: hidden;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
   text-transform: uppercase;
   font-weight: 600;
-  letter-spacing: .015rem;
-  white-space: nowrap;
   border-radius: $border-radius-md;
   color: $white;
   background-color: $principal;
