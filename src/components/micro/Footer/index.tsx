@@ -17,11 +17,11 @@ export function Footer() {
           &copy; 2022
         </span>
         |
-        <Link href={'/legal/use'} className={styles.content}>
+        <Link href={'/?content=legal-use'} className={styles.content}>
           Termos de uso
         </Link>
         |
-        <Link href={'/legal/privacy'} className={styles.content}>
+        <Link href={'/?content=legal-privacy'} className={styles.content}>
           Política de privaciadade
         </Link>
       </div>
