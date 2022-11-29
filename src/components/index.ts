@@ -2,6 +2,7 @@ export * from './mega/Home';
 export * from './mega/Dashboard';
 
 export * from './macro/Inicio';
+export * from './macro/legal';
 
 export * from './micro/Wrapper';
 export * from './micro/Main';
