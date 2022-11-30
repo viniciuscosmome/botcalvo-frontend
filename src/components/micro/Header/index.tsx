@@ -35,7 +35,7 @@ function Home() {
     <header className={classes(styles.header, styles.home)}>
       <Logo.Complete color />
 
-      <Navigation.Home selectTheme={true} />
+      <Navigation.Home selectTheme={true} responsive={true} />
     </header>
   );
 }

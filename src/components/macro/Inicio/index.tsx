@@ -34,21 +34,21 @@ export function Inicio() {
     <Main>
       <FloatCard
         title={'Streams'}
-        paragraph={'Little content about strems. Lorem ipsum dolor sit amet consectetur adipisicing elit.'}
+        paragraph={'Acompanhe seus streamers favoritos.'}
       >
         <IconHomePlay classes={styles.icon} />
       </FloatCard>
 
       <FloatCard
         title={'Dashboard'}
-        paragraph={'Little content about strems. Lorem ipsum dolor sit amet consectetur adipisicing elit.'}
+        paragraph={'Configure o BOTCalvinho no seu servidor no Discord.'}
       >
         <IconHomeDashboard classes={styles.icon} />
       </FloatCard>
 
       <FloatCard
         title={'Notificações'}
-        paragraph={'Little content about strems. Lorem ipsum dolor sit amet consectetur adipisicing elit.'}
+        paragraph={'Receba alerta quando suas lives favoritas estiverem online!'}
       >
         <IconHomeNotifications classes={styles.icon} />
       </FloatCard>

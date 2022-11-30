@@ -31,6 +31,46 @@
 }
 
 .link {
+  text-align: center;
   font-weight: 500;
   transition: color .3s ease;
+}
+
+.openMenu {
+  display: none!important;
+}
+
+@media (max-width: $screen-md) {
+  .openMenu {
+    display: flex!important;
+  }
+
+  .responsive {
+    flex-direction: column;
+    justify-content: flex-start;
+    row-gap: 1rem;
+
+    position: absolute;
+    top: 100%;
+    left: 100%;
+    z-index: 1050;
+
+    padding: 1rem;
+    width: 100%;
+    min-height: calc(100vh - 56px);
+    background-color: $background;
+    background: $background;
+    box-shadow: $box-shadow;
+
+    transition: left .2s ease;
+
+    &.visible {
+      left: 0;
+    }
+
+    .link {
+      padding: .5rem 0;
+      width: 100%;
+    }
+  }
 }
