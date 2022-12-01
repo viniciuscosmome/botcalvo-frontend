@@ -1,4 +1,5 @@
 export * from './mega/Home';
+export * from './mega/Authentication';
 export * from './mega/Dashboard';
 
 export * from './macro/Inicio';

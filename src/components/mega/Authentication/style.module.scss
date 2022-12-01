@@ -1,0 +1,32 @@
+@import '../../../styles/import.esential';
+
+.column {
+  @include display(flex, center, center, false, wrap);
+  flex: 1;
+  position: relative;
+}
+
+.left {
+  background-color: $principal;
+  background-image: $gradient-purple-0;
+}
+
+.right {
+  background-color: $background;
+}
+
+.main {
+  @include display(flex, center, center);
+  width: 100%;
+  height: calc(100vh - 30px);
+}
+
+.legal {
+  position: relative;
+  bottom: 9px;
+}
+
+.link {
+  margin: 0 .5rem;
+  font-size: .8rem;
+}
