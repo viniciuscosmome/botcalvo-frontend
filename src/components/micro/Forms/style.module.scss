@@ -1,0 +1,10 @@
+@import '../../../styles/import.esential';
+
+.form {
+  @include display(flex, center, flex-start, column);
+  align-content: center;
+  row-gap: 1.5rem;
+
+  max-width: 90%;
+  width: 350px;
+}
