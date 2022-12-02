@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { AuthenticationWrapper } from '../../components';
+import { AuthenticationWrapper, Login } from '../../components';
 
 export default function Authentication() {
   const route = useRouter();
@@ -10,7 +10,7 @@ export default function Authentication() {
 
   return (
     <AuthenticationWrapper>
-      form {page}
+      {page === listActions[0] && <Login />}
     </AuthenticationWrapper>
   );
 }
