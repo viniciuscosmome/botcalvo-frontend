@@ -1,7 +1,7 @@
 import { SyntheticEvent } from 'react';
 import styles from './style.module.scss';
 
-export type iInputProps = {
+type iInputProps = {
   index?: number;
   required?: boolean;
   describe: string;
@@ -12,7 +12,7 @@ export type iInputProps = {
 };
 
 export function Input(props: iInputProps) {
-  const id = `${props.name}-${props.index}`;
+  const id = `${props.name}-${props.index ?? 0}`;
 
   return (
     <label htmlFor={id} className={styles.label}>

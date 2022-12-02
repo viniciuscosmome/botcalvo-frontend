@@ -36,7 +36,7 @@
   top: 0;
   transform: translateY(-50%);
 
-  padding: 9px;
+  padding: 9px 1rem;
   width: 100%;
   pointer-events: none;
   font-size: .8rem;
@@ -63,7 +63,7 @@
   @include display(flex, center, flex-start);
   position: relative;
 
-  padding: 9px;
+  padding: 9px 1rem;
   width: 100%;
   font-size: 1rem;
   border-radius: $border-radius-sm;
