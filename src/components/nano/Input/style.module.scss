@@ -1,0 +1,73 @@
+@import '../../../styles/import.esential';
+
+.label {
+  @include display(flex, center, center);
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  background-color: $background;
+  border-radius: $border-radius-sm;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: $border-radius-sm;
+  }
+
+  &::before {
+    top: 3px;
+    bottom: -3px;
+    z-index: -1;
+    background-color: $principal;
+    background: $gradient-purple-0;
+  }
+
+  &::after {
+    z-index: -1;
+    background-color: $dashboard-border-color;
+  }
+}
+
+.describe {
+  position: absolute;
+  top: 0;
+  transform: translateY(-50%);
+
+  padding: 9px 1rem;
+  width: 100%;
+  pointer-events: none;
+  font-size: .8rem;
+  font-weight: 700;
+  color: $principal;
+
+  transition-property: top, transform, font-size, font-weight, color;
+  transition-duration: .2s;
+  transition-timing-function: ease-in-out;
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
+}
+
+.input[value='']:not(:focus) ~ .describe {
+  top: 50%;
+  font-size: 1rem;
+  font-weight: 500;
+  color: $gray;
+}
+
+.input {
+  @include display(flex, center, flex-start);
+  position: relative;
+
+  padding: 9px 1rem;
+  width: 100%;
+  font-size: 1rem;
+  border-radius: $border-radius-sm;
+  border: none;
+  outline: none;
+  background: none;
+}

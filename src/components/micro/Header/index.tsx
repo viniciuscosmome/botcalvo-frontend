@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { classes } from '../../../helpers/styles.helper';
 import { Logo, Column, Title, ButtonAction, Navigation } from '../..';
 import styles from './style.module.scss';
@@ -33,7 +34,9 @@ function Dashboard({ user }: iHeaderDashboardProps) {
 function Home() {
   return (
     <header className={classes(styles.header, styles.home)}>
-      <Logo.Complete color />
+      <Link href={'/'}>
+        <Logo.Complete color />
+      </Link>
 
       <Navigation.Home selectTheme={true} responsive={true} />
     </header>
