@@ -16,14 +16,19 @@
 }
 
 .main {
-  @include display(flex, center, center);
+  @include display(flex, center, center, false, wrap);
   width: 100%;
-  height: calc(100vh - 30px);
+  max-height: 100vh;
+  height: 100vw;
+  overflow-y: auto;
 }
 
 .legal {
   position: relative;
   bottom: 9px;
+  margin-top: auto;
+  width: 100%;
+  text-align: center;
 }
 
 .link {

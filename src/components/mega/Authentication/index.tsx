@@ -18,17 +18,17 @@ export function AuthenticationWrapper({ children }: iAuthenticationProps) {
 
         <main className={styles.main}>
           {children}
-        </main>
 
-        <footer className={styles.legal}>
-          <Link href={'/?content=legal-use'} className={styles.link}>
-            Termos de uso
-          </Link>
-          |
-          <Link href={'/?content=legal-privacy'} className={styles.link}>
-            Política de Privacidade
-          </Link>
-        </footer>
+          <footer className={styles.legal}>
+            <Link href={'/?content=legal-use'} className={styles.link}>
+              Termos de uso
+            </Link>
+            |
+            <Link href={'/?content=legal-privacy'} className={styles.link}>
+              Política de Privacidade
+            </Link>
+          </footer>
+        </main>
       </div>
     </Wrapper>
   );
