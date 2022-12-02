@@ -7,7 +7,7 @@ type iHorizontalSplitProps = {
 export function HorizontalSplit({ content }: iHorizontalSplitProps) {
   return (
     <span className={styles.split}>
-      <span className={styles.content} data-content={content} />
+      <span className={styles.content} data-content={content ?? ''} />
     </span>
   );
 }
