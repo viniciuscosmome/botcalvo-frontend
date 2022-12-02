@@ -5,6 +5,7 @@ export * from './mega/Dashboard';
 export * from './macro/Inicio';
 export * from './macro/legal';
 export * from './macro/Login';
+export * from './macro/Register';
 
 export * from './micro/Wrapper';
 export * from './micro/Main';
@@ -21,3 +22,4 @@ export * from './nano/Logo';
 export * from './nano/SelectTheme';
 export * from './nano/svg';
 export * from './nano/Input';
+export * from './nano/Checkbox';
