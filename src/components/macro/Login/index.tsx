@@ -52,7 +52,7 @@ export function Login() {
 
       <Link href={'/auth/register'} className={styles.fitWidth}>
         <ButtonAction type={'button'} fitWidth style={'simple'}>
-            Registrar-se
+            Cadastrar-se
         </ButtonAction>
       </Link>
 
