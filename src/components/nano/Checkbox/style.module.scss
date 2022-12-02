@@ -1,0 +1,27 @@
+@import '../../../styles/import.esential';
+
+.label {
+  @include display(flex, center, flex-start);
+  column-gap: .5rem;
+  cursor: pointer;
+}
+
+.checkbox {
+  @include hidden;
+}
+
+.checkbox:not(:checked) ~ .selected {
+  @include hidden;
+}
+
+.checkbox:checked ~ .undefined {
+  @include hidden;
+}
+
+.content::first-letter {
+  text-transform: uppercase;
+}
+
+.content {
+  user-select: none;
+}
