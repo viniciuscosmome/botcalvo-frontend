@@ -11,7 +11,9 @@ export function AuthenticationWrapper({ children }: iAuthenticationProps) {
   return (
     <Wrapper nowrap>
       <div className={classes(styles.column, styles.left)}>
-        <Logo.Complete size={'large'} color={'white'} />
+        <Link href={'/?content=home'}>
+          <Logo.Complete size={'large'} color={'white'} />
+        </Link>
       </div>
 
       <div className={classes(styles.column, styles.right)}>
@@ -20,6 +22,10 @@ export function AuthenticationWrapper({ children }: iAuthenticationProps) {
           {children}
 
           <footer className={styles.legal}>
+            <Link href={'/?content=home'} className={styles.link}>
+              Voltar ao início
+            </Link>
+            |
             <Link href={'/?content=legal-use'} className={styles.link}>
               Termos de uso
             </Link>
