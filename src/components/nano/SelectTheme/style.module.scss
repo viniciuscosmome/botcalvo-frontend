@@ -1,7 +1,7 @@
 @import '../../../styles/import.esential';
 
 .button {
-  @include display(flex, center, center);
+  @include display(none, center, center);
   column-gap: .5rem;
 
   padding-right: .7rem;
