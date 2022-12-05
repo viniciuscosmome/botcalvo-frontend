@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useState } from 'react';
-import { Title, ButtonAction, SelectTheme } from '../..';
+import { Title, ButtonAction, SelectThemeButtons } from '../..';
 import { classes } from '../../../helpers/styles.helper';
 import styles from './style.module.scss';
 
@@ -100,7 +100,7 @@ function Home({selectTheme, responsive}: iHomeProps) {
           </ButtonAction>
         </Link>
 
-        {selectTheme && <SelectTheme />}
+        {selectTheme && <SelectThemeButtons />}
       </nav>
     </>
   );
