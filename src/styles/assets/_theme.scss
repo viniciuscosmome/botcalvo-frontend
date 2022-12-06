@@ -33,12 +33,26 @@
 }
 
 // user select theme
+[data-user-theme=''] {
+  [data-select-color-schema=''] {
+    display: flex;
+  }
+}
+
 [data-user-theme=light] {
   color-scheme: light;
   @include light-theme;
+
+  [data-select-color-schema=light] {
+    display: flex;
+  }
 }
 
 [data-user-theme=dark] {
   color-scheme: dark;
   @include dark-theme;
+
+  [data-select-color-schema=dark] {
+    display: flex;
+  }
 }
