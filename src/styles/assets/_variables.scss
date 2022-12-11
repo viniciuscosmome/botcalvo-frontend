@@ -3,48 +3,50 @@ $purple-2: #8E2DE2;
 
 $white: #FDFDFD;
 $light: #DDDDDD;
-$gray: #777777;
-$dark: #171717;
+$gray:  #777777;
+$dark:  #171717;
 $black: #0D0D0D;
-$red: #FA1B1D;
-$yellow: #F9CB28;
-$green: #41FD75;
 
-$gradient-purple-0: linear-gradient(90deg, $purple-1 0%, $purple-2 100%);
-$gradient-purple-1: linear-gradient(90deg, #4a00e000 0%, $purple-2 100%);
-$gradient-purple-2: linear-gradient(90deg, #4a00e000 0%, #8e2de24d 100%);
-$linear-gradient-orange: linear-gradient(90deg, #FF4D4D 0%, $yellow 100%);
+$red:           #FA1B1D;
+$red-dark:      #3B0607;
+$yellow:        #F9CB28;
+$yellow-dark:   #3B3009;
+$green:         #41FD75;
+$green-dark:    #103D1D;
+
+$gradient-purple-0:         linear-gradient(90deg, $purple-1 0%, $purple-2 100%);
+$gradient-purple-1:         linear-gradient(90deg, #4a00e000 0%, $purple-2 100%);
+$gradient-purple-2:         linear-gradient(90deg, #4a00e000 0%, #8e2de24d 100%);
+$linear-gradient-orange:    linear-gradient(90deg, #FF4D4D 0%, $yellow 100%);
 
 // Convert css variables to use like a scss variables
-$principal: var(--principal);
-$secondary: var(--secondary);
-$support: var(--support);
-$background: var(--background);
+$principal:     var(--principal);
+$secondary:     var(--secondary);
+$support:       var(--support);
+$background:    var(--background);
 
 // Home
 $home-content-width-limit: 1012px;
-// Home end
 
 // Dashboard
-$dashboard-border-color: var(--dashboard-border-color);
-$dashboard-workarea-width: 100%;
-$dashboard-navigation-width: 35%;
-$dashboard-navigation-max-width: 350px;
-$dashboard-common-padding: 1rem;
-// Dashboard end
+$dashboard-border-color:            var(--dashboard-border-color);
+$dashboard-workarea-width:          100%;
+$dashboard-navigation-width:        35%;
+$dashboard-navigation-max-width:    350px;
+$dashboard-common-padding:          1rem;
 
-$screen-xs: 0;
-$screen-sm: 576px;
-$screen-md: 768px;
-$screen-lg: 992px;
-$screen-xl: 1200px;
-$screen-xxl: 1400px;
+$screen-xs:     0;
+$screen-sm:     576px;
+$screen-md:     768px;
+$screen-lg:     992px;
+$screen-xl:     1200px;
+$screen-xxl:    1400px;
 
 $border-radius-sm: 5px;
 $border-radius-md: 9px;
 $border-radius-lg: 12px;
 
-$box-shadow: 0 .5rem 1rem rgba($black, .15);
-$box-shadow-sm: 0 .125rem .25rem rgba($black, .075);
-$box-shadow-lg: 0 1rem 3rem rgba($black, .175);
-$box-shadow-inset: inset 0 1px 2px rgba($black, .075);
+$box-shadow:        0 .5rem 1rem rgba($black, .15);
+$box-shadow-sm:     0 .125rem .25rem rgba($black, .075);
+$box-shadow-lg:     0 1rem 3rem rgba($black, .175);
+$box-shadow-inset:  inset 0 1px 2px rgba($black, .075);
