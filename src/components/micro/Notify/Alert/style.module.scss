@@ -1,0 +1,86 @@
+@import '../../../../styles/import.esential';
+
+.alert {
+  display: none;
+  margin: .5rem auto;
+  position: relative;
+  max-width: 100%;
+  width: 500px;
+  overflow-x: hidden;
+  color: $background;
+  background-color: $secondary;
+  border: 2px solid $secondary;
+  border-radius: $border-radius-sm;
+
+  .title {
+    @include display(flex, center, space-between);
+    padding: 0.5rem 1rem;
+    font-size: 1.1rem;
+    font-weight: 800;
+  }
+
+  .close {
+    cursor: pointer;
+    font-size: 1.1rem;
+  }
+
+  .icon {
+    pointer-events: none;
+  }
+
+  .content {
+    padding: 1rem;
+    font-weight: 600;
+  }
+
+  &.success,
+  &.warning,
+  &.error {
+    display: block;
+  }
+
+  &.success {
+    background-color: $green-dark;
+    border: 2px solid $green-dark;
+
+    .title,
+    .close {
+      color: $green;
+    }
+
+    .content {
+      color: $green-dark;
+      background-color: $green;
+    }
+  }
+
+  &.warning {
+    background-color: $yellow-dark;
+    border: 2px solid $yellow-dark;
+
+    .title,
+    .close {
+      color: $yellow;
+    }
+
+    .content {
+      color: $yellow-dark;
+      background-color: $yellow;
+    }
+  }
+
+  &.error {
+    background-color: $red-dark;
+    border: 2px solid $red-dark;
+
+    .title,
+    .close {
+      color: $red;
+    }
+
+    .content {
+      color: $red-dark;
+      background-color: $red;
+    }
+  }
+}

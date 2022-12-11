@@ -16,6 +16,7 @@ export * from './micro/Footer';
 export * from './micro/Column';
 export * from './micro/Navigation';
 export * from './micro/Forms';
+export * from './micro/Notify';
 
 export * from './nano/ButtonAction';
 export * from './nano/Title';
