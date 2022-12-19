@@ -3,6 +3,7 @@ import { classes } from '../../../../helpers/styles.helper';
 import styles from './style.module.scss';
 
 type iAlertProps = {
+  show: boolean;
   status: 'success' | 'warning' | 'error' | '';
   title: string;
   content: string;
@@ -12,7 +13,9 @@ type iAlertProps = {
 export function Alert(props: iAlertProps) {
   const closeAlert = (): void => {
     const alertCard = document.querySelector<HTMLElement>('[data-js="notify-alert"]');
-    alertCard?.remove();
+    alertCard?.classList.remove(styles.success);
+    alertCard?.classList.remove(styles.warning);
+    alertCard?.classList.remove(styles.error);
   };
 
   const startAutoClose = () => {
@@ -23,7 +26,7 @@ export function Alert(props: iAlertProps) {
   useEffect(startAutoClose, [startAutoClose]);
 
   return (
-    <section data-js={'notify-alert'} className={classes(styles.alert, styles[props.status])}>
+    <section data-js={'notify-alert'} className={classes(styles.alert, props.show ? styles[props.status] : '')}>
       <h3 className={styles.title}>
         <span>
           {props.title}
