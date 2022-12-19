@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { SyntheticEvent, useState } from 'react';
-import { Forms, Input, Checkbox, ButtonAction, HorizontalSplit, Title } from '../../';
+import { Forms, Input, Checkbox, ButtonAction, HorizontalSplit, Title, FormErrors } from '../../';
+import Validates from '../../../modules/Validates/';
+import type { iValidateAuthenticationFields } from '../../../modules/Validates/';
 import styles from './style.module.scss';
 
 export function Register() {
@@ -9,6 +11,7 @@ export function Register() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [terms, setTerms] = useState(false);
+  const [invalidFields, setInvalidFields] = useState<Array<string>>([]);
 
   const onsubmit = (event: SyntheticEvent): void => {
     event.preventDefault();
@@ -16,18 +19,52 @@ export function Register() {
     console.log('SEND TO AXIOS: ', name, email, password, confirmPassword, terms);
   };
 
+  const validateFields = (data: iValidateAuthenticationFields): void => {
+    const result = Validates.auth(data);
+    setInvalidFields(result);
+  };
+
   const changeValue = (event: SyntheticEvent<HTMLInputElement>): void => {
     const input = event.target as HTMLInputElement;
+    const { name, value, checked } = input;
+    const currentFieldsValues = {
+      name,
+      email,
+      password: [password, 'register'],
+      confirmPassword: [confirmPassword, password],
+      terms: 'false'
+    };
 
-    input.name === 'name' && setName(input.value);
-    input.name === 'email' && setEmail(input.value);
-    input.name === 'password' && setPassword(input.value);
-    input.name === 'confirmPassword' && setConfirmPassword(input.value);
-    input.name === 'terms' && setTerms(input.checked);
+    if (name === 'name') {
+      currentFieldsValues.name = value;
+      setName(value);
+    }
+
+    if (name === 'email') {
+      currentFieldsValues.email = value;
+      setEmail(value);
+    }
+
+    if (name === 'password') {
+      currentFieldsValues.password[0] = value;
+      setPassword(value);
+    }
+
+    if (name === 'confirmPassword') {
+      currentFieldsValues.confirmPassword[0] = value;
+      setConfirmPassword(value);
+    }
+
+    if (name === 'terms') {
+      currentFieldsValues.terms = checked.toString();
+      setTerms(checked);
+    }
+
+    validateFields(currentFieldsValues);
   };
 
   return (
-    <Forms action={'/auth/register'} method={'GET'} onsubmit={onsubmit}>
+    <Forms action={''} method={'POST'} onsubmit={onsubmit}>
       <Title size={'medium'}>
         Cadastrar-se
       </Title>
@@ -84,9 +121,9 @@ export function Register() {
         </Link>
       </Checkbox>
 
-      <ButtonAction type={'submit'} fitWidth grad>
-        Cadastrar
-      </ButtonAction>
+      {invalidFields.length
+        ? <FormErrors messages={invalidFields} />
+        : <ButtonAction type={'submit'} fitWidth grad>Cadastrar</ButtonAction>}
 
       <HorizontalSplit content='ou' />
 
