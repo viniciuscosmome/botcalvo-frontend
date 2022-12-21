@@ -23,6 +23,43 @@
   &:hover {
     filter: brightness(0.90);
   }
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background-color: $principal;
+    opacity: 0;
+    transition: .1s ease-in-out;
+  }
+
+  &:disabled {
+    .loading {
+      display: flex;
+    }
+
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  .loading {
+    @include display(none, center, center);
+    position: absolute;
+    z-index: 1;
+    font-size: 1rem;
+    animation: loading-rotate 2s both infinite;
+  }
+}
+
+@keyframes loading-rotate {
+  0%, 50% {
+    transform: rotate(0deg);
+  }
+  25%, 100% {
+    transform: rotate(360deg);
+  }
 }
 
 .light {

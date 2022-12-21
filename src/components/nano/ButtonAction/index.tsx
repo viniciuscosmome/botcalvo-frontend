@@ -11,11 +11,12 @@ type iButtonActionProps = {
   slim?: boolean;
   grad?: boolean;
   scrollSnap?: boolean;
+  disabled?: boolean;
   action?: () => void;
   children: React.ReactNode | Array<React.ReactNode>;
 };
 
-export function ButtonAction ({
+export function ButtonAction({
   customClass,
   style,
   textAlign,
@@ -24,6 +25,7 @@ export function ButtonAction ({
   slim,
   grad,
   scrollSnap,
+  disabled,
   action,
   children
 }: iButtonActionProps) {
@@ -41,9 +43,11 @@ export function ButtonAction ({
     <button
       type={type}
       onClick={action}
+      disabled={disabled}
       className={classes(styles.button, ...customizeClass)}
     >
       {children}
+      {disabled && <i className={classes(styles.loading, 'bi bi-broadcast')}></i>}
     </button>
   );
 }
