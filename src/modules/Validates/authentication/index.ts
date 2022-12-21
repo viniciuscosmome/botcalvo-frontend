@@ -115,5 +115,4 @@ function validate(fields: iValidateAuthenticationFields): Array<string> {
   return errors;
 }
 
-export type { iValidateAuthenticationFields };
 export default validate;
