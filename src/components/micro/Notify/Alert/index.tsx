@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { classes } from '../../../../helpers/styles.helper';
 import styles from './style.module.scss';
 
@@ -7,7 +6,6 @@ type iAlertProps = {
   status: 'success' | 'warning' | 'error' | '';
   title: string;
   content: string;
-  autoClose: number;
 };
 
 export function Alert(props: iAlertProps) {
@@ -17,13 +15,6 @@ export function Alert(props: iAlertProps) {
     alertCard?.classList.remove(styles.warning);
     alertCard?.classList.remove(styles.error);
   };
-
-  const startAutoClose = () => {
-    if (props.autoClose <= 0) return;
-    setTimeout(closeAlert, props.autoClose);
-  };
-
-  useEffect(startAutoClose, [startAutoClose]);
 
   return (
     <section data-js={'notify-alert'} className={classes(styles.alert, props.show ? styles[props.status] : '')}>
