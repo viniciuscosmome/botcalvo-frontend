@@ -3,10 +3,17 @@ export type iAuthError = {
   message: string | undefined;
 };
 
-export type iChannel = {
+export type iStream = {
   id: string;
   name: string;
+  image: string;
+};
+
+export type iChannel = {
+  id: string;
   channel_id: string;
+  server_id: string;
+  name: string;
   stream_limit: number;
-  stream_id: Array<string>;
+  stream_info: Array<iStream>;
 };
