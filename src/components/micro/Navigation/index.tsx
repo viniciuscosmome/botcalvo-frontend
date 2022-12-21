@@ -1,13 +1,15 @@
 import Link from 'next/link';
 import { useState } from 'react';
-import { Title, ButtonAction, SelectThemeButtons } from '../..';
+
+import type { iChannel } from '../../../services/global.api.types';
 import { classes } from '../../../helpers/styles.helper';
+import { Title, ButtonAction, SelectThemeButtons } from '../..';
 import styles from './style.module.scss';
 
-export type iNavigationDashboardItemProps = {
-  id: number | string;
+type iConfigButton = {
+  id: string;
   name: string;
-  redirect: string;
+  redirect?: string;
 };
 
 type iNavigationDashboardSectionProps = {
@@ -16,7 +18,7 @@ type iNavigationDashboardSectionProps = {
   extraButtonIcon?: string;
   extraButtonContent?: string;
   extraButtonRedirect?: string;
-  content: Array<iNavigationDashboardItemProps>;
+  channels: Array<iChannel> | Array<iConfigButton> | undefined;
 };
 
 type iHomeProps = {
@@ -25,10 +27,11 @@ type iHomeProps = {
 };
 
 const renderNavItem = ({
+  id,
   name,
   redirect,
-}: iNavigationDashboardItemProps, index: number) => {
-  const redirectTo = redirect ?? '#unknow';
+}: iConfigButton, index: number) => {
+  const redirectTo = redirect ? redirect : `./channel?id=${id}`;
 
   return (
     <Link href={redirectTo} key={index}>
@@ -45,7 +48,7 @@ function Dashboard({
   extraButtonIcon,
   extraButtonContent,
   extraButtonRedirect,
-  content }: iNavigationDashboardSectionProps) {
+  channels }: iNavigationDashboardSectionProps) {
   const extraButtonRedirectTo = extraButtonRedirect ?? '#unknow';
 
   return (
@@ -56,7 +59,7 @@ function Dashboard({
         </Title>}
 
       <nav className={styles.list}>
-        {content.map(renderNavItem)}
+        {channels?.map(renderNavItem)}
       </nav>
 
       {extraButtonContent && extraButtonRedirect &&

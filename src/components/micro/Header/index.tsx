@@ -1,12 +1,12 @@
 import Link from 'next/link';
+
+import type { iUserInfo } from '../../../services/auth/types';
 import { classes } from '../../../helpers/styles.helper';
 import { Logo, Column, Title, ButtonAction, Navigation } from '../..';
 import styles from './style.module.scss';
 
 type iHeaderDashboardProps = {
-  user: {
-    name: string;
-  };
+  user: iUserInfo | null;
 };
 
 function Dashboard({ user }: iHeaderDashboardProps) {
@@ -24,7 +24,7 @@ function Dashboard({ user }: iHeaderDashboardProps) {
 
       <Column select={'right'}>
         <Title size='small'>
-          {user.name}
+          {user?.name ?? ''}
         </Title>
       </Column>
     </header>
