@@ -1,23 +1,40 @@
 import Link from 'next/link';
-import { SyntheticEvent, useState } from 'react';
-import { Forms, Input, ButtonAction, HorizontalSplit, Title, FormErrors } from '../../';
-import type { iValidateAuthenticationFields } from '../../../modules/Validates/';
-import Validates from '../../../modules/Validates/';
+import { SyntheticEvent, useContext, useState } from 'react';
+
+import type { iAuthError } from '../../../services/global.api.types';
+import { AuthContext } from '../../../contexts/auth';
+import type { iValidateAuthenticationFields } from '../../../modules/Validates/authentication/types';
+import authValidateFields from '../../../modules/Validates/authentication';
+import { Forms, Input, ButtonAction, HorizontalSplit, Title, Alert, FormErrors } from '../../';
 import styles from './style.module.scss';
 
 export function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [invalidFields, setInvalidFields] = useState<Array<string>>([]);
+  const [signInError, setSignInError ] = useState({} as iAuthError);
+  const [validationInProgress, setValidationInProgress] = useState(false);
+  const { signIn } = useContext(AuthContext);
 
-  const onsubmit = (event: SyntheticEvent): void => {
+  const onsubmit = async (event: SyntheticEvent): Promise<void> => {
     event.preventDefault();
+    setValidationInProgress(true);
+    setSignInError({} as iAuthError);
 
-    console.log('SEND TO AXIOS: ', email, password);
+    const result = await signIn({
+      email,
+      password
+    });
+
+    if (result) {
+      setSignInError(result);
+    }
+
+    setValidationInProgress(false);
   };
 
   const validateFields = (data: iValidateAuthenticationFields): void => {
-    const result = Validates.auth(data);
+    const result = authValidateFields(data);
     setInvalidFields(result);
   };
 
@@ -43,7 +60,14 @@ export function Login() {
   };
 
   return (
-    <Forms action={'./'} method={'GET'} onsubmit={onsubmit}>
+    <Forms onsubmit={onsubmit}>
+      <Alert
+        show={!!signInError.status}
+        status={'error'}
+        title={JSON.stringify(signInError.status)}
+        content={signInError.message ?? 'ABOUT_ERROR::SIGNIN::UNDEFINED'}
+      />
+
       <Title size={'medium'}>
         Entrar
       </Title>
@@ -68,7 +92,7 @@ export function Login() {
 
       {invalidFields.length
         ? <FormErrors messages={invalidFields} />
-        : <ButtonAction type={'submit'} fitWidth grad>Entrar</ButtonAction>}
+        : <ButtonAction disabled={validationInProgress} type={'submit'} fitWidth grad>Entrar</ButtonAction>}
 
       <HorizontalSplit content={'ou'} />
 
