@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import { SyntheticEvent, useState } from 'react';
+
+import type { iValidateAuthenticationFields } from '../../../modules/Validates/authentication/types';
+import authValidateFields from '../../../modules/Validates/authentication';
 import { Forms, Input, ButtonAction, Title, FormErrors } from '../../';
-import type { iValidateAuthenticationFields } from '../../../modules/Validates';
-import Validates from '../../../modules/Validates';
 
 export function Recovery() {
   const [email, setEmail] = useState('');
@@ -10,12 +11,10 @@ export function Recovery() {
 
   const onsubmit = (event: SyntheticEvent): void => {
     event.preventDefault();
-
-    console.log('SEND TO AXIOS: ', email);
   };
 
   const validateFields = (data: iValidateAuthenticationFields): void => {
-    const result = Validates.auth(data);
+    const result = authValidateFields(data);
     setInvalidFields(result);
   };
 
@@ -35,7 +34,7 @@ export function Recovery() {
   };
 
   return (
-    <Forms action={'/auth/recovery'} method={'GET'} onsubmit={onsubmit}>
+    <Forms onsubmit={onsubmit}>
       <Title size={'medium'}>
         Recuperar
       </Title>
