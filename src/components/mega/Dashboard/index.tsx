@@ -1,4 +1,6 @@
-import type { iNavigationDashboardItemProps } from '../../';
+import { useContext, ReactNode } from 'react';
+
+import { AuthContext } from '../../../contexts/auth';
 import {
   Wrapper,
   Header,
@@ -7,14 +9,24 @@ import {
   HorizontalSplit
 } from '../../';
 
+import type { iChannel, iStream } from '../../../services/global.api.types';
+
 type iDashboardWrapperProps = {
-  channels: Array<iNavigationDashboardItemProps>;
-  streams: Array<iNavigationDashboardItemProps>;
-  children: React.ReactNode | Array<React.ReactNode>;
+  children: ReactNode | Array<ReactNode>;
 };
 
-export function DashboardWrapper({ channels, streams, children }: iDashboardWrapperProps) {
-  const user = { name: 'Ada Lovelace' };
+export function DashboardWrapper({ children }: iDashboardWrapperProps) {
+  const { user } = useContext(AuthContext);
+  const channels = user?.channels;
+  const streams: Array<iStream> = [];
+
+  channels?.forEach(({stream_info}: iChannel) => {
+    stream_info.forEach((currentStreamInfo: iStream) => {
+      if (!streams.includes(currentStreamInfo)) {
+        streams.push(currentStreamInfo);
+      }
+    });
+  });
 
   const actionsRoutes = [
     { id: 'configuracoes', name: 'configurações', redirect: './settings' },
@@ -35,25 +47,25 @@ export function DashboardWrapper({ channels, streams, children }: iDashboardWrap
           <Navigation.Dashboard
             icon={'bi bi-collection-play-fill'}
             title={'Seus canais'}
-            content={channels}
+            channels={channels}
             extraButtonIcon={'bi bi-plus'}
             extraButtonContent={'Adicionar canal'}
             extraButtonRedirect={'/dashboard/new-channel'}
           />
 
+          <HorizontalSplit />
+
           <Navigation.Dashboard
             icon={'bi bi-compass-fill'}
             title={'Streams'}
-            content={streams}
+            channels={streams}
             extraButtonIcon={'bi bi-plus'}
             extraButtonContent={'Adicionar stream'}
             extraButtonRedirect={'/dashboard/new-stream'}
           />
 
-          <HorizontalSplit />
-
           <Navigation.Dashboard
-            content={actionsRoutes}
+            channels={actionsRoutes}
           />
         </Column>
       </Wrapper>
