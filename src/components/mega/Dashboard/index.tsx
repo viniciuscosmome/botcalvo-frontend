@@ -47,7 +47,7 @@ export function DashboardWrapper({ children }: iDashboardWrapperProps) {
           <Navigation.Dashboard
             icon={'bi bi-collection-play-fill'}
             title={'Seus canais'}
-            channels={channels}
+            options={channels}
             extraButtonIcon={'bi bi-plus'}
             extraButtonContent={'Adicionar canal'}
             extraButtonRedirect={'/dashboard/new-channel'}
@@ -58,14 +58,14 @@ export function DashboardWrapper({ children }: iDashboardWrapperProps) {
           <Navigation.Dashboard
             icon={'bi bi-compass-fill'}
             title={'Streams'}
-            channels={streams}
+            options={streams}
             extraButtonIcon={'bi bi-plus'}
             extraButtonContent={'Adicionar stream'}
             extraButtonRedirect={'/dashboard/new-stream'}
           />
 
           <Navigation.Dashboard
-            channels={actionsRoutes}
+            options={actionsRoutes}
           />
         </Column>
       </Wrapper>

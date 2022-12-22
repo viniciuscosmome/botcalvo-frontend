@@ -6,7 +6,7 @@ import { classes } from '../../../helpers/styles.helper';
 import { Title, ButtonAction, SelectThemeButtons } from '../..';
 import styles from './style.module.scss';
 
-type iConfigButton = {
+type iButtonProps = {
   id: string;
   name: string;
   redirect?: string;
@@ -18,7 +18,7 @@ type iNavigationDashboardSectionProps = {
   extraButtonIcon?: string;
   extraButtonContent?: string;
   extraButtonRedirect?: string;
-  channels: Array<iChannel> | Array<iConfigButton> | undefined;
+  options: Array<iChannel> | Array<iButtonProps> | undefined;
 };
 
 type iHomeProps = {
@@ -30,7 +30,7 @@ const renderNavItem = ({
   id,
   name,
   redirect,
-}: iConfigButton, index: number) => {
+}: iButtonProps, index: number) => {
   const redirectTo = redirect ? redirect : `./channel?id=${id}`;
 
   return (
@@ -48,7 +48,7 @@ function Dashboard({
   extraButtonIcon,
   extraButtonContent,
   extraButtonRedirect,
-  channels }: iNavigationDashboardSectionProps) {
+  options }: iNavigationDashboardSectionProps) {
   const extraButtonRedirectTo = extraButtonRedirect ?? '#unknow';
 
   return (
@@ -59,7 +59,7 @@ function Dashboard({
         </Title>}
 
       <nav className={styles.list}>
-        {channels?.map(renderNavItem)}
+        {options?.map(renderNavItem)}
       </nav>
 
       {extraButtonContent && extraButtonRedirect &&
