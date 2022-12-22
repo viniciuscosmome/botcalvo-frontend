@@ -1,4 +1,8 @@
+import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
+
+import variables from '../../config/variables';
+import { validateToken } from '../../modules/Validates/geral';
 import { AuthenticationWrapper, Login, Register, Recovery, Reset } from '../../components';
 
 export default function Authentication() {
@@ -6,7 +10,7 @@ export default function Authentication() {
   const { action } = route.query;
   const listActions = ['login', 'register', 'recovery', 'reset'];
 
-  const page = typeof action === 'string' && listActions.includes(action) ? action : listActions[0];
+  const page = (action && typeof action === 'string' && listActions.includes(action)) ? action : listActions[0];
 
   return (
     <AuthenticationWrapper>
@@ -17,3 +21,21 @@ export default function Authentication() {
     </AuthenticationWrapper>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const token = context.req.cookies[variables.cookie.token_name];
+  const checkedToken = validateToken(token);
+
+  if (checkedToken) {
+    return {
+      redirect: {
+        destination: '/dashboard/stats',
+        permanent: false,
+      }
+    };
+  } else {
+    return {
+      props: {}
+    };
+  }
+};
