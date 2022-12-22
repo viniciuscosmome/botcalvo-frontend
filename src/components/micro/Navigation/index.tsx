@@ -10,6 +10,7 @@ type iButtonProps = {
   id: string;
   name: string;
   redirect?: string;
+  slim?: boolean;
 };
 
 type iNavigationDashboardSectionProps = {
@@ -18,6 +19,7 @@ type iNavigationDashboardSectionProps = {
   extraButtonIcon?: string;
   extraButtonContent?: string;
   extraButtonRedirect?: string;
+  extraButtonSlim?: boolean;
   options: Array<iChannel> | Array<iButtonProps> | undefined;
 };
 
@@ -30,12 +32,13 @@ const renderNavItem = ({
   id,
   name,
   redirect,
+  slim = false,
 }: iButtonProps, index: number) => {
   const redirectTo = redirect ? redirect : `./channel?id=${id}`;
 
   return (
     <Link href={redirectTo} key={index}>
-      <ButtonAction style='simple' textAlign='left' fitWidth scrollSnap slim>
+      <ButtonAction style='simple' textAlign='left' fitWidth scrollSnap slim={slim}>
         {name}
       </ButtonAction>
     </Link>
@@ -48,6 +51,7 @@ function Dashboard({
   extraButtonIcon,
   extraButtonContent,
   extraButtonRedirect,
+  extraButtonSlim = false,
   options }: iNavigationDashboardSectionProps) {
   const extraButtonRedirectTo = extraButtonRedirect ?? '#unknow';
 
@@ -64,7 +68,7 @@ function Dashboard({
 
       {extraButtonContent && extraButtonRedirect &&
         <Link href={extraButtonRedirectTo} className={styles.extraButton}>
-          <ButtonAction style='simple-opacity' textAlign='left' fitWidth slim>
+          <ButtonAction style='simple-opacity' textAlign='left' fitWidth slim={extraButtonSlim}>
             {extraButtonIcon && <i className={extraButtonIcon}></i>} {extraButtonContent}
           </ButtonAction>
         </Link>}

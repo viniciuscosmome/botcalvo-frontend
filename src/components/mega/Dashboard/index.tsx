@@ -29,9 +29,9 @@ export function DashboardWrapper({ children }: iDashboardWrapperProps) {
   });
 
   const actionsRoutes = [
-    { id: 'configuracoes', name: 'configurações', redirect: './settings' },
-    { id: 'help', name: 'ajuda', redirect: './help' },
-    { id: 'account', name: 'conta', redirect: './account' },
+    { id: 'configuracoes', name: 'configurações', redirect: './settings', slim: true },
+    { id: 'help', name: 'ajuda', redirect: './help', slim: true },
+    { id: 'account', name: 'conta', redirect: './account', slim: true },
   ];
 
   return (
@@ -53,8 +53,6 @@ export function DashboardWrapper({ children }: iDashboardWrapperProps) {
             extraButtonRedirect={'/dashboard/new-channel'}
           />
 
-          <HorizontalSplit />
-
           <Navigation.Dashboard
             icon={'bi bi-compass-fill'}
             title={'Streams'}
@@ -63,6 +61,8 @@ export function DashboardWrapper({ children }: iDashboardWrapperProps) {
             extraButtonContent={'Adicionar stream'}
             extraButtonRedirect={'/dashboard/new-stream'}
           />
+
+          <HorizontalSplit />
 
           <Navigation.Dashboard
             options={actionsRoutes}
