@@ -1,7 +1,8 @@
 import { SyntheticEvent, useState } from 'react';
+
+import type { iValidateAuthenticationFields } from '../../../modules/Validates/authentication/types';
+import authValidateFields from '../../../modules/Validates/authentication';
 import { Forms, Input, ButtonAction, Title, FormErrors } from '../../';
-import type { iValidateAuthenticationFields } from '../../../modules/Validates';
-import Validates from '../../../modules/Validates';
 
 export function Reset() {
   const [password, setPassword] = useState('');
@@ -10,12 +11,10 @@ export function Reset() {
 
   const onsubmit = (event: SyntheticEvent): void => {
     event.preventDefault();
-
-    console.log('SEND TO AXIOS: ', password, confirmPassword);
   };
 
   const validateFields = (data: iValidateAuthenticationFields): void => {
-    const result = Validates.auth(data);
+    const result = authValidateFields(data);
     setInvalidFields(result);
   };
 
@@ -41,7 +40,7 @@ export function Reset() {
   };
 
   return (
-    <Forms action={'/auth/recovery'} method={'GET'} onsubmit={onsubmit}>
+    <Forms onsubmit={onsubmit}>
       <Title size={'medium'}>
         Redefinir senha
       </Title>
