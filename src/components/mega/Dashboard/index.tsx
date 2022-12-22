@@ -9,8 +9,6 @@ import {
   HorizontalSplit
 } from '../../';
 
-import type { iChannel, iStream } from '../../../services/global.api.types';
-
 type iDashboardWrapperProps = {
   children: ReactNode | Array<ReactNode>;
 };
@@ -18,15 +16,6 @@ type iDashboardWrapperProps = {
 export function DashboardWrapper({ children }: iDashboardWrapperProps) {
   const { user } = useContext(AuthContext);
   const channels = user?.channels;
-  const streams: Array<iStream> = [];
-
-  channels?.forEach(({stream_info}: iChannel) => {
-    stream_info.forEach((currentStreamInfo: iStream) => {
-      if (!streams.includes(currentStreamInfo)) {
-        streams.push(currentStreamInfo);
-      }
-    });
-  });
 
   const actionsRoutes = [
     { id: 'configuracoes', name: 'configurações', redirect: './settings', slim: true },
@@ -51,15 +40,6 @@ export function DashboardWrapper({ children }: iDashboardWrapperProps) {
             extraButtonIcon={'bi bi-plus'}
             extraButtonContent={'Adicionar canal'}
             extraButtonRedirect={'/dashboard/new-channel'}
-          />
-
-          <Navigation.Dashboard
-            icon={'bi bi-compass-fill'}
-            title={'Streams'}
-            options={streams}
-            extraButtonIcon={'bi bi-plus'}
-            extraButtonContent={'Adicionar stream'}
-            extraButtonRedirect={'/dashboard/new-stream'}
           />
 
           <HorizontalSplit />
