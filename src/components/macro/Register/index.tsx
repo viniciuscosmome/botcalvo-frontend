@@ -1,8 +1,11 @@
 import Link from 'next/link';
 import { SyntheticEvent, useState } from 'react';
-import { Forms, Input, Checkbox, ButtonAction, HorizontalSplit, Title, FormErrors } from '../../';
-import Validates from '../../../modules/Validates/';
-import type { iValidateAuthenticationFields } from '../../../modules/Validates/';
+
+import type { iAuthError } from '../../../services/global.api.types';
+import { registerUser } from '../../../services/auth';
+import type { iValidateAuthenticationFields } from '../../../modules/Validates//authentication/types';
+import authValidateFields from '../../../modules/Validates/authentication';
+import { Forms, Input, Checkbox, ButtonAction, HorizontalSplit, Title, Alert, FormErrors } from '../../';
 import styles from './style.module.scss';
 
 export function Register() {
@@ -12,15 +15,31 @@ export function Register() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [terms, setTerms] = useState(false);
   const [invalidFields, setInvalidFields] = useState<Array<string>>([]);
+  const [registerError, setRegisterError] = useState({} as iAuthError);
+  const [validationInProgress, setValidationInProgress] = useState(false);
 
-  const onsubmit = (event: SyntheticEvent): void => {
+  const onsubmit = async (event: SyntheticEvent): Promise<void> => {
     event.preventDefault();
+    setValidationInProgress(true);
+    setRegisterError({} as iAuthError);
 
-    console.log('SEND TO AXIOS: ', name, email, password, confirmPassword, terms);
+    const result = await registerUser({
+      name,
+      email,
+      password,
+      confirmPassword,
+      terms
+    });
+
+    if (result.status >= 300 || result.status < 200) {
+      setRegisterError(result);
+    }
+
+    setValidationInProgress(false);
   };
 
   const validateFields = (data: iValidateAuthenticationFields): void => {
-    const result = Validates.auth(data);
+    const result = authValidateFields(data);
     setInvalidFields(result);
   };
 
@@ -32,7 +51,7 @@ export function Register() {
       email,
       password: [password, 'register'],
       confirmPassword: [confirmPassword, password],
-      terms: 'false'
+      terms: terms.toString()
     };
 
     if (name === 'name') {
@@ -64,7 +83,14 @@ export function Register() {
   };
 
   return (
-    <Forms action={''} method={'POST'} onsubmit={onsubmit}>
+    <Forms onsubmit={onsubmit}>
+      <Alert
+        show={!!registerError.status}
+        status={'error'}
+        title={JSON.stringify(registerError.status)}
+        content={registerError.message ?? 'ABOUT_ERROR:: REGISTER:: UNDEFINED'}
+      />
+
       <Title size={'medium'}>
         Cadastrar-se
       </Title>
@@ -123,7 +149,7 @@ export function Register() {
 
       {invalidFields.length
         ? <FormErrors messages={invalidFields} />
-        : <ButtonAction type={'submit'} fitWidth grad>Cadastrar</ButtonAction>}
+        : <ButtonAction disabled={validationInProgress} type={'submit'} fitWidth grad>Cadastrar</ButtonAction>}
 
       <HorizontalSplit content='ou' />
 
