@@ -13,7 +13,7 @@ function Dashboard() {
     <header className={styles.header}>
       <Column select={'left'}>
         <Title size='small'>
-          <Link href={'/'}>
+          <Link href={'/dashboard/stats'}>
             <Logo.Complete color />
           </Link>
         </Title>
