@@ -19,9 +19,10 @@ export function DashboardWrapper({ children }: iDashboardWrapperProps) {
   const channelsLimit = user?.channels_limit;
 
   const actionsRoutes = [
-    { id: 'configuracoes', name: 'configurações', redirect: './settings', slim: true },
-    { id: 'help', name: 'ajuda', redirect: './help', slim: true },
-    { id: 'account', name: 'conta', redirect: './account', slim: true },
+    { name: 'configurações', redirect: './settings', slim: true },
+    { name: 'ajuda', redirect: './help', slim: true },
+    { name: 'conta', redirect: './account', slim: true },
+    { name: 'sair', redirect: '/auth/logout', slim: true },
   ];
 
   return (
