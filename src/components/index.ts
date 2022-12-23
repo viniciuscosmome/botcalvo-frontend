@@ -5,6 +5,7 @@ export * from './mega/Dashboard';
 export * from './macro/Inicio';
 export * from './macro/legal';
 export * from './macro/Login';
+export * from './macro/Logout';
 export * from './macro/Register';
 export * from './macro/Recovery';
 export * from './macro/Reset';
