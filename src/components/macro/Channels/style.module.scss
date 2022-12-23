@@ -1,0 +1,156 @@
+@import '../../../styles/import.esential';
+
+.wrapper {
+  @include display(flex, false, center, false, wrap);
+  gap: 2rem;
+  margin: 2rem auto;
+  max-width: 100%;
+  width: calc(350px * 2 + 6rem);
+}
+
+.card {
+  max-width: calc(100% - 2rem);
+  width: 375px;
+  border-radius: $border-radius-md;
+  border: 1px solid $dashboard-border-color;
+  box-shadow: $box-shadow;
+}
+
+.header {
+  padding: 1rem;
+  border-bottom: 1px solid $dashboard-border-color;
+}
+
+.channelId {
+  @include display(flex, center, flex-start);
+  cursor: pointer;
+  max-width: 100%;
+  overflow: hidden;
+  font-size: 12px;
+  font-weight: 300;
+  color: $gray;
+}
+
+.checkbox {
+  @include hidden;
+
+  &:checked ~ {
+    .channelIdValue {
+      color: $secondary;
+
+      &::before {
+        opacity: 0;
+      }
+    }
+  }
+}
+
+.channelIdValue {
+  position: relative;
+  margin-right: auto;
+  padding: 0 .5rem;
+  color: $background;
+
+  &::before {
+    content: '************';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    padding: 0 .5rem;
+    color: $secondary;
+    background-color: $background;
+    opacity: 1;
+    transition: opacity .2s ease-in-out;
+  }
+}
+
+.title {
+  max-width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.body {
+  padding: 1.5rem 1rem;
+  min-height: 300px;
+  max-height: 300px;
+  overflow: auto;
+}
+
+.stream {
+  @include display(flex, center);
+  gap: .5rem;
+  margin-top: 1rem;
+  position: relative;
+  padding: .5rem;
+  border-radius: $border-radius-sm;
+  border: 1px solid $dashboard-border-color;
+
+  &.create {
+    margin-bottom: 2rem;
+  }
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.userPicture {
+  @include display(flex, center, center);
+  overflow: hidden;
+  width: 30px;
+  min-width: 30px;
+  height: 30px;
+  min-height: 30px;
+  color: $dashboard-border-color;
+  border-radius: 50%;
+  border: 1px solid $dashboard-border-color;
+  background-color: $background;
+}
+
+.action {
+  @include display(flex, center, center);
+  order: 2;
+  margin-left: auto;
+  padding: .5rem 1rem;
+  color: $black;
+  background-color: $white;
+  border-radius: $border-radius-sm;
+  transition: background-color .2s ease-in-out, color .2s ease-in-out;
+
+  &.delete {
+    color: $red-dark;
+    background-color: $red;
+
+    &:hover {
+      color: $red;
+      background-color: $red-dark;
+
+      & ~ .streamName::before {
+        content: 'deletar';
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.streamName {
+  max-width: 50%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  &::before {
+    position: absolute;
+    top: .25rem;
+
+    color: $red;
+    font-size: x-small;
+    font-weight: 500;
+    letter-spacing: 0.075rem;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity .2s ease-in-out;
+  }
+}

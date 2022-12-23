@@ -8,6 +8,7 @@ export * from './macro/Login';
 export * from './macro/Register';
 export * from './macro/Recovery';
 export * from './macro/Reset';
+export * from './macro/Channels';
 
 export * from './micro/Wrapper';
 export * from './micro/Main';
