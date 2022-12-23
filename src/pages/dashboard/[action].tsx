@@ -2,12 +2,12 @@ import { GetServerSideProps } from 'next';
 
 import variables from '../../config/variables';
 import { validateToken } from '../../modules/Validates/geral';
-import { DashboardWrapper } from '../../components';
+import { DashboardWrapper, ChannelsWrapper } from '../../components';
 
 export default function Dashboard() {
   return (
     <DashboardWrapper>
-      Custom Dashboard
+      <ChannelsWrapper />
     </DashboardWrapper>
   );
 }
