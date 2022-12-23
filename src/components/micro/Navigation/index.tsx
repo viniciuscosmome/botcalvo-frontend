@@ -8,6 +8,7 @@ import styles from './style.module.scss';
 
 type iButtonProps = {
   name: string;
+  id?: string;
   redirect?: string;
   slim?: boolean;
 };
@@ -29,24 +30,20 @@ type iHomeProps = {
 };
 
 const renderNavItem = ({
+  id,
   name,
   redirect,
   slim = false,
 }: iButtonProps, index: number) => {
-  if (redirect) {
-    return (
-      <Link href={redirect} key={index}>
-        <ButtonAction style='simple' textAlign='left' fitWidth scrollSnap slim={slim}>
-          {name}
-        </ButtonAction>
-      </Link>
-    );
-  }
+
+  redirect = redirect ?? `#${id}`;
 
   return (
-    <ButtonAction key={index} style='simple' textAlign='left' fitWidth scrollSnap slim={slim}>
-      {name}
-    </ButtonAction>
+    <Link href={redirect} key={index}>
+      <ButtonAction style='simple' textAlign='left' fitWidth scrollSnap slim={slim}>
+        {name}
+      </ButtonAction>
+    </Link>
   );
 };
 
