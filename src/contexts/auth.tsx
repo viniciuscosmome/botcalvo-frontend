@@ -18,7 +18,7 @@ type iAuthContext = {
   isAuthenticated: boolean;
   user: iUserInfo | null;
   signIn: (data: iLoginProps) => Promise<void | iAuthError>;
-  logout: () => Promise<void>;
+  logout: (redirect: boolean | undefined) => Promise<void>;
 }
 
 export const AuthContext = createContext({} as iAuthContext);
@@ -54,7 +54,7 @@ export function AuthProvider({ children }: iAuthProvider) {
     }
   };
 
-  const logout = async (): Promise<void> => {
+  const logout = async (redirect: boolean | undefined): Promise<void> => {
     const token = cookie.get(variables.cookie.token_name);
     const checkedToken = validateToken(token);
 
@@ -66,7 +66,9 @@ export function AuthProvider({ children }: iAuthProvider) {
     setUser({} as iUserInfo);
     cookie.remove(variables.cookie.token_name);
 
-    Router.push('/');
+    if (redirect) {
+      Router.push('/auth/login');
+    }
   };
 
   const checkToken = (): void => {
@@ -77,7 +79,7 @@ export function AuthProvider({ children }: iAuthProvider) {
       recoverUserInformation(checkedToken)
         .then(response => {
           if (response.status === 401) {
-            logout();
+            logout(true);
           } else {
             setUser(response);
           }
