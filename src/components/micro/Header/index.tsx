@@ -1,20 +1,21 @@
 import Link from 'next/link';
+import { useContext } from 'react';
 
-import type { iUserInfo } from '../../../services/auth/types';
+import { AuthContext } from '../../../contexts/auth';
 import { classes } from '../../../helpers/styles.helper';
 import { Logo, Column, Title, ButtonAction, Navigation } from '../..';
 import styles from './style.module.scss';
 
-type iHeaderDashboardProps = {
-  user: iUserInfo | null;
-};
+function Dashboard() {
+  const { user } = useContext(AuthContext);
 
-function Dashboard({ user }: iHeaderDashboardProps) {
   return (
     <header className={styles.header}>
       <Column select={'left'}>
         <Title size='small'>
-          Calvinho
+          <Link href={'/'}>
+            <Logo.Complete color />
+          </Link>
         </Title>
 
         <ButtonAction slim grad>

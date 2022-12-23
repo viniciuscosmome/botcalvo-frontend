@@ -16,6 +16,7 @@ type iDashboardWrapperProps = {
 export function DashboardWrapper({ children }: iDashboardWrapperProps) {
   const { user } = useContext(AuthContext);
   const channels = user?.channels;
+  const channelsLimit = user?.channels_limit;
 
   const actionsRoutes = [
     { id: 'configuracoes', name: 'configurações', redirect: './settings', slim: true },
@@ -25,7 +26,7 @@ export function DashboardWrapper({ children }: iDashboardWrapperProps) {
 
   return (
     <Wrapper>
-      <Header.Dashboard user={user} />
+      <Header.Dashboard />
 
       <Wrapper nowrap workarea>
         <Column select='left' workarea>
@@ -37,6 +38,7 @@ export function DashboardWrapper({ children }: iDashboardWrapperProps) {
             icon={'bi bi-collection-play-fill'}
             title={'Seus canais'}
             options={channels}
+            showExtraButton={!!channelsLimit}
             extraButtonIcon={'bi bi-plus'}
             extraButtonContent={'Adicionar canal'}
             extraButtonRedirect={'/dashboard/new-channel'}
