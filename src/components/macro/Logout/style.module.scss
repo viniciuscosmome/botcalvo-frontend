@@ -1,0 +1,25 @@
+@import '../../../styles/import.esential';
+
+.container {
+  @include display(flex, center, center, false, wrap);
+  max-width: 70%;
+  width: 100%;
+  text-align: center;
+}
+
+.message {
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.link {
+  padding: .5rem 2rem;
+  border: 2px solid $dashboard-border-color;
+  border-radius: $border-radius-sm;
+  transition: .2s ease-in-out;
+
+  &:hover {
+    color: $principal;
+    border-color: $principal;
+  }
+}
