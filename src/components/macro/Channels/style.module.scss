@@ -12,8 +12,12 @@
   max-width: calc(100% - 2rem);
   width: 375px;
   border-radius: $border-radius-md;
-  border: 1px solid $dashboard-border-color;
+  border: 2px solid $dashboard-border-color;
   box-shadow: $box-shadow;
+
+  &.focus {
+    border-color: $principal;
+  }
 }
 
 .header {
@@ -96,7 +100,7 @@
   }
 }
 
-.userPicture {
+.streamPicture {
   @include display(flex, center, center);
   overflow: hidden;
   width: 30px;
@@ -107,6 +111,10 @@
   border-radius: 50%;
   border: 1px solid $dashboard-border-color;
   background-color: $background;
+}
+
+.streamImage {
+  width: 100%;
 }
 
 .action {
