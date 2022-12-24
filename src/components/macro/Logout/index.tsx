@@ -5,10 +5,10 @@ import Link from 'next/link';
 import styles from './style.module.scss';
 
 export function Logout() {
-  const { logout } = useContext(AuthContext);
+  const { disconnectUser } = useContext(AuthContext);
 
   useEffect(() => {
-    logout(false);
+    disconnectUser();
   }, []);
 
   return (

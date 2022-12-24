@@ -1,33 +1,54 @@
-import Link from 'next/link';
+import cookie from 'js-cookie';
 import { SyntheticEvent, useContext, useState } from 'react';
+import Router from 'next/router';
+import Link from 'next/link';
 
 import type { iAuthError } from '../../../services/global.api.types';
+import { setApiDefaultHeadersAuthorization } from '../../../services/api';
 import { AuthContext } from '../../../contexts/auth';
+import variables from '../../../config/variables';
+import { loginRequest } from '../../../services/auth';
+import { validateToken } from '../../../modules/Validates/geral';
 import type { iValidateAuthenticationFields } from '../../../modules/Validates/authentication/types';
 import authValidateFields from '../../../modules/Validates/authentication';
 import { Forms, Input, ButtonAction, HorizontalSplit, Title, Alert, FormErrors } from '../../';
 import styles from './style.module.scss';
 
 export function Login() {
+  const { setUser } = useContext(AuthContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [invalidFields, setInvalidFields] = useState<Array<string>>([]);
   const [signInError, setSignInError ] = useState({} as iAuthError);
   const [validationInProgress, setValidationInProgress] = useState(false);
-  const { signIn } = useContext(AuthContext);
 
   const onsubmit = async (event: SyntheticEvent): Promise<void> => {
     event.preventDefault();
     setValidationInProgress(true);
     setSignInError({} as iAuthError);
 
-    const result = await signIn({
+    const { status, token, user, message } = await loginRequest({
       email,
       password
     });
 
-    if (result) {
-      setSignInError(result);
+    const checkedToken = validateToken(token);
+
+    if (checkedToken && user) {
+      cookie.set(variables.cookie.token_name, checkedToken, {
+        expires: variables.cookie.token_expires(),
+        secure: process.env.NODE_ENV === 'production',
+      });
+
+      setApiDefaultHeadersAuthorization(checkedToken);
+      setUser(user);
+
+      Router.push('/dashboard/stats');
+    } else {
+      setSignInError({
+        status,
+        message
+      });
     }
 
     setValidationInProgress(false);

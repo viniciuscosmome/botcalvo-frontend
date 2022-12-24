@@ -1,12 +1,11 @@
-import { ReactNode, useEffect, useState } from 'react';
+import { Dispatch, ReactNode, SetStateAction, useEffect, useState } from 'react';
 import { createContext } from 'react';
 import Router from 'next/router';
 import cookie from 'js-cookie';
 
-import type { iAuthError } from '../services/global.api.types';
-import type { iLoginProps, iUserInfo } from '../services/auth/types';
-import { loginRequest, logoutRequest, recoverUserInformation } from '../services/auth';
-import { setApiDefaultHeadersAuthorization, clearApiDefaultHeadersAuthorization } from '../services/api';
+import type { iUserInfo } from '../services/auth/types';
+import { logoutRequest, recoverUserInformation } from '../services/auth';
+import { clearApiDefaultHeadersAuthorization } from '../services/api';
 import variables from '../config/variables';
 import { validateToken } from '../modules/Validates/geral';
 
@@ -17,9 +16,9 @@ type iAuthProvider = {
 type iAuthContext = {
   isAuthenticated: boolean;
   user: iUserInfo | null;
-  signIn: (data: iLoginProps) => Promise<void | iAuthError>;
-  logout: (redirect: boolean | undefined) => Promise<void>;
-}
+  setUser: Dispatch<SetStateAction<iUserInfo | null>>;
+  disconnectUser: (sign?: boolean) => void;
+};
 
 export const AuthContext = createContext({} as iAuthContext);
 
@@ -28,69 +27,46 @@ export function AuthProvider({ children }: iAuthProvider) {
 
   const isAuthenticated = !!user;
 
-  const signIn = async ({ email, password }: iLoginProps): Promise<void | iAuthError> => {
-    const { status, token, user, message } = await loginRequest({
-      email,
-      password
-    });
-
-    const checkedToken = validateToken(token);
-
-    if (checkedToken && user) {
-      cookie.set(variables.cookie.token_name, checkedToken, {
-        expires: variables.cookie.token_expires(),
-        secure: process.env.NODE_ENV === 'production',
-      });
-
-      setApiDefaultHeadersAuthorization(checkedToken);
-      setUser(user);
-
-      Router.push('/dashboard/stats');
-    } else {
-      return {
-        status,
-        message
-      };
-    }
-  };
-
-  const logout = async (redirect: boolean | undefined): Promise<void> => {
+  const getTokenFromCookie = (): string | undefined => {
     const token = cookie.get(variables.cookie.token_name);
     const checkedToken = validateToken(token);
 
-    if (checkedToken) {
-      await logoutRequest(checkedToken);
+    return checkedToken;
+  };
+
+  const disconnectUser = async (signin?: boolean): Promise<void> => {
+    const token = getTokenFromCookie();
+
+    if (token) {
+      await logoutRequest(token);
     }
 
     clearApiDefaultHeadersAuthorization();
     setUser({} as iUserInfo);
     cookie.remove(variables.cookie.token_name);
 
-    if (redirect) {
-      Router.push('/auth/login');
-    }
+    signin && Router.push('/auth/login');
   };
 
-  const checkToken = (): void => {
-    const token = cookie.get(variables.cookie.token_name);
-    const checkedToken = validateToken(token);
+  const checkCurrentToken = (): void => {
+    const token = getTokenFromCookie();
 
-    if (!user && checkedToken) {
-      recoverUserInformation(checkedToken)
-        .then(response => {
-          if (response.status === 401) {
-            logout(true);
-          } else {
+    if (!user && token) {
+      recoverUserInformation(token)
+        .then(( response ) => {
+          if (response.status >= 200 && response.status < 300) {
             setUser(response);
+          } else {
+            disconnectUser();
           }
         });
     }
   };
 
-  useEffect(checkToken, []);
+  useEffect(checkCurrentToken, []);
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, signIn, logout, user }}>
+    <AuthContext.Provider value={{ isAuthenticated, user, setUser, disconnectUser }}>
       {children}
     </AuthContext.Provider>
   );
