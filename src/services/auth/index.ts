@@ -32,9 +32,15 @@ export async function loginRequest({
       const { status, data } = response;
 
       if (status && data.token && data.user) {
+        const { name, channel, channel_limit } = data.user;
+
         result.status = status;
         result.token = data.token;
-        result.user = data.user;
+        result.user = {
+          name,
+          channels_limit: channel_limit,
+          channels: channel
+        };
       }
     })
     .catch((err) => {
