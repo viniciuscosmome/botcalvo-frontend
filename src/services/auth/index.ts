@@ -2,7 +2,7 @@ import Router from 'next/router';
 
 import { someFieldIsEmpty } from '../../modules/Validates/geral';
 import { api } from '../api';
-import type { iAuthError } from '../global.api.types';
+import type { iApiErrorResponse } from '../global.api.types';
 import type {
   iLoginProps,
   iLoginResponse,
@@ -32,14 +32,14 @@ export async function loginRequest({
       const { status, data } = response;
 
       if (status && data.token && data.user) {
-        const { name, channel, channel_limit } = data.user;
+        const { name, channels, channel_limit } = data.user;
 
         result.status = status;
         result.token = data.token;
         result.user = {
           name,
           channels_limit: channel_limit,
-          channels: channel
+          channels
         };
       }
     })
@@ -104,8 +104,8 @@ export async function registerUser({
   password,
   confirmPassword,
   terms,
-}: iRegisterProps): Promise<iAuthError> {
-  const result = {} as iAuthError;
+}: iRegisterProps): Promise<iApiErrorResponse> {
+  const result = {} as iApiErrorResponse;
   const lastValidate = someFieldIsEmpty(
     name,
     email,
