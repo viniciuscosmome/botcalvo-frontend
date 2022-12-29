@@ -16,7 +16,7 @@ export function Input(props: iInputProps) {
 
   return (
     <label htmlFor={id} className={styles.label}>
-      <input id={id} className={styles.input} {...props}/>
+      <input id={id} className={styles.input} {...props} autoComplete={'off'} />
       <div className={styles.describe}>
         {props.describe}
       </div>
