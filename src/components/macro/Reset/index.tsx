@@ -1,6 +1,6 @@
 import { SyntheticEvent, useState } from 'react';
 
-import type { iValidateAuthenticationFields } from '../../../modules/Validates/authentication/types';
+import type { iValidateAuthenticationFields } from '../../../modules/Validates/types';
 import authValidateFields from '../../../modules/Validates/authentication';
 import { Forms, Input, ButtonAction, Title, FormErrors } from '../../';
 

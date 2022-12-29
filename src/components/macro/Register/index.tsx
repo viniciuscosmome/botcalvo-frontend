@@ -3,7 +3,7 @@ import { SyntheticEvent, useState } from 'react';
 
 import type { iAuthError } from '../../../services/global.api.types';
 import { registerUser } from '../../../services/auth';
-import type { iValidateAuthenticationFields } from '../../../modules/Validates//authentication/types';
+import type { iValidateAuthenticationFields } from '../../../modules/Validates/types';
 import authValidateFields from '../../../modules/Validates/authentication';
 import { Forms, Input, Checkbox, ButtonAction, HorizontalSplit, Title, Alert, FormErrors } from '../../';
 import styles from './style.module.scss';

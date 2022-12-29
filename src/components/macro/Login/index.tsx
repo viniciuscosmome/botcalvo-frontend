@@ -9,7 +9,7 @@ import { AuthContext } from '../../../contexts/auth';
 import variables from '../../../config/variables';
 import { loginRequest } from '../../../services/auth';
 import { validateToken } from '../../../modules/Validates/geral';
-import type { iValidateAuthenticationFields } from '../../../modules/Validates/authentication/types';
+import type { iValidateAuthenticationFields } from '../../../modules/Validates/types';
 import authValidateFields from '../../../modules/Validates/authentication';
 import { Forms, Input, ButtonAction, HorizontalSplit, Title, Alert, FormErrors } from '../../';
 import styles from './style.module.scss';
