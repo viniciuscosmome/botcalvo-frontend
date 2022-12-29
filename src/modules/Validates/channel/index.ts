@@ -15,7 +15,7 @@ const verify: iValidateCreateChannelVerifyFields = {
     field = 'ID';
 
     if (validator.isEmpty(id, { ignore_whitespace: true })) {
-      isValidId = messages.format(field);
+      isValidId = messages.empty(field);
     } else if (!validator.isNumeric(id)) {
       isValidId = messages.onlyNumbers(field);
     }
