@@ -1,17 +1,17 @@
 import validator from 'validator';
 import type {
   iValidateAuthenticationVerifyFields,
-  iValidateAuthenticationResponse,
+  iValidateResponse,
   iValidateAuthenticationFields,
-} from './types';
-import { errors, nameLimit, passwordLimit, messages } from './config';
+} from '../types';
+import { errors, nameLimit, passwordLimit, messages } from '../config';
 
 let field: string;
 let compareField: string;
 
 const verify: iValidateAuthenticationVerifyFields = {
-  name: (param: string): iValidateAuthenticationResponse => {
-    let message: iValidateAuthenticationResponse;
+  name: (param: string): iValidateResponse => {
+    let message: iValidateResponse;
     field = 'Nome';
 
     if (validator.isEmpty(param)) {
@@ -23,8 +23,8 @@ const verify: iValidateAuthenticationVerifyFields = {
     return message;
   },
 
-  email: (param: string): iValidateAuthenticationResponse => {
-    let message: iValidateAuthenticationResponse;
+  email: (param: string): iValidateResponse => {
+    let message: iValidateResponse;
     field = 'E-mail';
 
     if (validator.isEmpty(param)) {
@@ -39,8 +39,8 @@ const verify: iValidateAuthenticationVerifyFields = {
   password: (
     param: string,
     currentPage?: string,
-  ): iValidateAuthenticationResponse => {
-    let message: iValidateAuthenticationResponse;
+  ): iValidateResponse => {
+    let message: iValidateResponse;
     field = 'Senha';
 
     if (validator.isEmpty(param)) {
@@ -61,8 +61,8 @@ const verify: iValidateAuthenticationVerifyFields = {
   confirmPassword: (
     param: string,
     compare: string | undefined = '',
-  ): iValidateAuthenticationResponse => {
-    let message: iValidateAuthenticationResponse;
+  ): iValidateResponse => {
+    let message: iValidateResponse;
     field = 'Confirmar senha';
     compareField = 'Senha';
 
@@ -78,8 +78,8 @@ const verify: iValidateAuthenticationVerifyFields = {
     return message;
   },
 
-  terms: (param: string): iValidateAuthenticationResponse => {
-    let message: iValidateAuthenticationResponse;
+  terms: (param: string): iValidateResponse => {
+    let message: iValidateResponse;
 
     if (validator.isBoolean(param) && param === 'false') {
       message = messages.acceptTerms();
@@ -94,7 +94,7 @@ function clearErrors(): void {
 }
 
 function validate(fields: iValidateAuthenticationFields): Array<string> {
-  let error: iValidateAuthenticationResponse;
+  let error: iValidateResponse;
 
   clearErrors();
 

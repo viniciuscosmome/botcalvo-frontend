@@ -6,6 +6,8 @@ export const passwordLimit: iLengthLimit = { min: 8, max: 42 };
 
 export const messages = {
   empty: (field: string) => `"${field}" não pode estar em branco`,
+  onlyNumbers: (field: string) => `"${field}" precisa conter somente números`,
+  onlyAlpha: (field: string) => `"${field}" precisa conter somente letras`,
   length: (field: string, options: iLengthLimit) => `"${field}" está fora do limite de tamanho. (min: ${options.min}, max: ${options.max})`,
   format: (field: string) => `"${field}" tem um formato inválido.`,
   equals: (field: string, compare: string) => `"${field}" precisa ser igual a "${compare}"`,
