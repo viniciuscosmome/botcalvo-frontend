@@ -19,6 +19,7 @@ export function DashboardWrapper({ children }: iDashboardWrapperProps) {
   const channelsLimit = user?.channels_limit;
 
   const actionsRoutes = [
+    { name: 'status', redirect: './stats', slim: true },
     { name: 'configurações', redirect: './settings', slim: true },
     { name: 'ajuda', redirect: './help', slim: true },
     { name: 'conta', redirect: './account', slim: true },
