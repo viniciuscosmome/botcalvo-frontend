@@ -9,7 +9,7 @@ import styles from './style.module.scss';
 
 function RenderStream({id, image, name}: iStream, channelId: string) {
   const handleClick = () => {
-    console.log('handleclick');
+    console.log('handleclick-delete-stream');
   };
 
   return (
@@ -33,7 +33,7 @@ function RenderChannel({id, channel_id, name, stream_info, stream_limit}: iChann
   const showChannelId = `show-channel-${id}`;
 
   const handleClick = (): void => {
-    Router.push(`/dashboard/new-stream?channelId=${id}`);
+    Router.push(`/dashboard/new-stream?ch=${id}`);
   };
 
   return (
