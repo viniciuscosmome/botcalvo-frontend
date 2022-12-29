@@ -3,7 +3,7 @@ import { SyntheticEvent, useContext, useState } from 'react';
 import Router from 'next/router';
 import Link from 'next/link';
 
-import type { iAuthError } from '../../../services/global.api.types';
+import type { iApiErrorResponse } from '../../../services/global.api.types';
 import { setApiDefaultHeadersAuthorization } from '../../../services/api';
 import { AuthContext } from '../../../contexts/auth';
 import variables from '../../../config/variables';
@@ -19,13 +19,13 @@ export function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [invalidFields, setInvalidFields] = useState<Array<string>>([]);
-  const [signInError, setSignInError ] = useState({} as iAuthError);
+  const [signInError, setSignInError ] = useState({} as iApiErrorResponse);
   const [validationInProgress, setValidationInProgress] = useState(false);
 
   const onsubmit = async (event: SyntheticEvent): Promise<void> => {
     event.preventDefault();
     setValidationInProgress(true);
-    setSignInError({} as iAuthError);
+    setSignInError({} as iApiErrorResponse);
 
     const { status, token, user, message } = await loginRequest({
       email,

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { SyntheticEvent, useState } from 'react';
 
-import type { iAuthError } from '../../../services/global.api.types';
+import type { iApiErrorResponse } from '../../../services/global.api.types';
 import { registerUser } from '../../../services/auth';
 import type { iValidateAuthenticationFields } from '../../../modules/Validates/types';
 import authValidateFields from '../../../modules/Validates/authentication';
@@ -15,13 +15,13 @@ export function Register() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [terms, setTerms] = useState(false);
   const [invalidFields, setInvalidFields] = useState<Array<string>>([]);
-  const [registerError, setRegisterError] = useState({} as iAuthError);
+  const [registerError, setRegisterError] = useState({} as iApiErrorResponse);
   const [validationInProgress, setValidationInProgress] = useState(false);
 
   const onsubmit = async (event: SyntheticEvent): Promise<void> => {
     event.preventDefault();
     setValidationInProgress(true);
-    setRegisterError({} as iAuthError);
+    setRegisterError({} as iApiErrorResponse);
 
     const result = await registerUser({
       name,

@@ -1,4 +1,4 @@
-import type { iChannel, iAuthError } from '../global.api.types';
+import type { iChannel, iApiErrorResponse } from '../global.api.types';
 
 export type iLoginProps = {
   email: string;
@@ -11,7 +11,7 @@ export type iUserInfo = {
   channels: Array<iChannel>;
 };
 
-export type iLoginResponse = iAuthError & {
+export type iLoginResponse = iApiErrorResponse & {
   token: string;
   user: iUserInfo | undefined;
 };
@@ -24,7 +24,7 @@ export type iRegisterProps = {
   terms: boolean;
 };
 
-export type iRecoverResponse = iAuthError & iUserInfo;
+export type iRecoverResponse = iApiErrorResponse & iUserInfo;
 
 // export type iRecoveryProps = {
 //   email: string;

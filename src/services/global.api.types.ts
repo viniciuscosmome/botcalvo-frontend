@@ -1,4 +1,4 @@
-export type iAuthError = {
+export type iApiErrorResponse = {
   status: number;
   message: string | undefined;
 };
