@@ -1,0 +1,31 @@
+@import '../../../styles/import.esential';
+
+.form {
+  @include display(flex, flex-start, flex-start, column);
+  row-gap: 1rem;
+  margin: 2rem auto 3rem;
+  padding: 1rem;
+  max-width: 95%;
+  width: 475px;
+  border: 2px solid $dashboard-border-color;
+  border-radius: $border-radius-lg;
+}
+
+.submit {
+  margin-top: 1rem;
+}
+
+.faq {
+  max-width: 95%;
+  width: 100%;
+}
+
+.title {
+  padding-bottom: 1rem;
+  font-size: larger;
+  letter-spacing: 0.03rem;
+}
+
+.paragraph {
+  color: $gray;
+}

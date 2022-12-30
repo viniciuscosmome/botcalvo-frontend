@@ -10,6 +10,7 @@ export * from './macro/Register';
 export * from './macro/Recovery';
 export * from './macro/Reset';
 export * from './macro/Channels';
+export * from './macro/CreateChannel';
 
 export * from './micro/Wrapper';
 export * from './micro/Main';
