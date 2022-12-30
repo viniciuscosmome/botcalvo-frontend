@@ -12,7 +12,6 @@ export type iStream = {
 export type iChannel = {
   id: string;
   channel_id: string;
-  server_id: string;
   name: string;
   stream_limit: number;
   stream_info: Array<iStream>;
