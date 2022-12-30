@@ -1,6 +1,6 @@
-import Router from 'next/router';
+// import Router from 'next/router';
 
-import type { iApiErrorResponse, iChannel, iStream } from '../global.api.types';
+import type { iApiErrorResponse, iStream } from '../global.api.types';
 import { someFieldIsEmpty } from '../../modules/Validates/geral';
 import { api } from '../api';
 
@@ -9,9 +9,9 @@ type iCrateChannel = {
   channelName: string;
 };
 
-type  iCrateChannelResponse = {
-  channel: iChannel;
-} & iApiErrorResponse;
+// type  iCrateChannelResponse = {
+//   channel: iChannel; // import iChannel
+// } & iApiErrorResponse;
 
 type iUpdateChannelName = {
   id: string;
