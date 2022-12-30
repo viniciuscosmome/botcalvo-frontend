@@ -1,13 +1,21 @@
 import { GetServerSideProps } from 'next';
+import { useRouter } from 'next/router';
 
 import variables from '../../config/variables';
 import { validateToken } from '../../modules/Validates/geral';
-import { DashboardWrapper, ChannelsWrapper } from '../../components';
+import { DashboardWrapper, ChannelsWrapper, CreateChannel } from '../../components';
 
 export default function Dashboard() {
+  const router = useRouter();
+  const { action } = router.query;
+  const listActions = ['stats', 'new-channel', 'new-stream'];
+
+  const page = (action && typeof action === 'string' && listActions.includes(action)) ? action : listActions[0];
+
   return (
     <DashboardWrapper>
-      <ChannelsWrapper />
+      {page === listActions[0] && <ChannelsWrapper />}
+      {page === listActions[1] && <CreateChannel />}
     </DashboardWrapper>
   );
 }
