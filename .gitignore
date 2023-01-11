@@ -51,6 +51,7 @@ dist-ssr
 .idea
 .DS_Store
 *.suo
+*package-lock.json
 *.ntvs*
 *.njsproj
 *.sln

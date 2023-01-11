@@ -4,7 +4,7 @@ import styles from './style.module.scss';
 
 type iButtonActionProps = {
   customClass?: string;
-  style?: 'light' | 'simple' | 'simple-opacity';
+  style?: 'light' | 'simple' | 'simple-opacity' | 'inactiveButton';
   textAlign?: 'left' | 'right';
   type?: 'button' | 'submit';
   fitWidth?: boolean;
@@ -27,7 +27,7 @@ export function ButtonAction({
   scrollSnap,
   disabled,
   action,
-  children
+  children,
 }: iButtonActionProps) {
   const customizeClass: Array<string> = [];
 
@@ -47,7 +47,10 @@ export function ButtonAction({
       className={classes(styles.button, ...customizeClass)}
     >
       {children}
-      {disabled && <i className={classes(styles.loading, 'bi bi-broadcast')}></i>}
+      {disabled && (
+        <i className={classes(styles.loading, 'bi bi-broadcast')}></i>
+      )}
     </button>
   );
 }
+

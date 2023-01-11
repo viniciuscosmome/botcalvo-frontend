@@ -5,7 +5,16 @@ import type { iAuthError } from '../../../services/global.api.types';
 import { registerUser } from '../../../services/auth';
 import type { iValidateAuthenticationFields } from '../../../modules/Validates//authentication/types';
 import authValidateFields from '../../../modules/Validates/authentication';
-import { Forms, Input, Checkbox, ButtonAction, HorizontalSplit, Title, Alert, FormErrors } from '../../';
+import {
+  Forms,
+  Input,
+  Checkbox,
+  ButtonAction,
+  HorizontalSplit,
+  Title,
+  Alert,
+  FormErrors,
+} from '../../';
 import styles from './style.module.scss';
 
 export function Register() {
@@ -28,7 +37,7 @@ export function Register() {
       email,
       password,
       confirmPassword,
-      terms
+      terms,
     });
 
     if (result.status >= 300 || result.status < 200) {
@@ -51,7 +60,7 @@ export function Register() {
       email,
       password: [password, 'register'],
       confirmPassword: [confirmPassword, password],
-      terms: terms.toString()
+      terms: terms.toString(),
     };
 
     if (name === 'name') {
@@ -91,9 +100,7 @@ export function Register() {
         content={registerError.message ?? 'ABOUT_ERROR:: REGISTER:: UNDEFINED'}
       />
 
-      <Title size={'medium'}>
-        Cadastrar-se
-      </Title>
+      <Title size={'medium'}>Cadastrar-se</Title>
 
       <Input
         describe={'nome:'}
@@ -147,11 +154,31 @@ export function Register() {
         </Link>
       </Checkbox>
 
-      {invalidFields.length
-        ? <FormErrors messages={invalidFields} />
-        : <ButtonAction disabled={validationInProgress} type={'submit'} fitWidth grad>Cadastrar</ButtonAction>}
+      {invalidFields.length ? (
+        <>
+          <FormErrors messages={invalidFields} />
+          <ButtonAction
+            disabled={validationInProgress}
+            type={'button'}
+            fitWidth
+            grad
+            style="inactiveButton"
+          >
+            Cadastrar
+          </ButtonAction>
+        </>
+      ) : (
+        <ButtonAction
+          disabled={validationInProgress}
+          type={'submit'}
+          fitWidth
+          grad
+        >
+          Cadastrar
+        </ButtonAction>
+      )}
 
-      <HorizontalSplit content='ou' />
+      <HorizontalSplit content="ou" />
 
       <Link href={'/auth/login'} className={styles.fitWidth}>
         <ButtonAction type={'submit'} fitWidth style={'simple'}>
