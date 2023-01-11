@@ -112,6 +112,9 @@
 .simple-opacity.slim {
   padding: .35rem 1rem;
 }
+.inactiveButton {
+  cursor: not-allowed
+}
 
 .scrollSnap {
   scroll-margin: .5rem;
